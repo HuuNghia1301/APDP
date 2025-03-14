@@ -1,0 +1,4 @@
+IdUser,FirstName,LastName,Email,PhoneNumber,Password,DoB,Role,CreatedAt
+1,Nghia,Nguyen,admin@gmail.com,0325456789,$2a$11$zGpotCwIrXyZ5UcOyfI0jOtsecaNdgtJkDeyuzBOgpHNaqZZkjmJu,01/13/2004,Admin,03/12/2025 20:34:51
+2,Nguyen,nguyen,tuanng@gmail.com,0231553548,$2a$11$EPpubVCYcWWgS/Rqa7YwaubqXuKFOKZfeU2sUEPa/p2Kk6ht6wysK,03/13/2025,Teacher,03/13/2025 17:22:07
+3,Nguyen,Tuan,a@gmail.com,0345678978,$2a$11$4sxZK4Qoe64ownw8VV7CN.2fvfA1RDxH2IMp5M3iS6jiSJ/6n5fIm,03/14/2025,Student,03/14/2025 13:36:38

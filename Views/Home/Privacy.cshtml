@@ -1,6 +1,37 @@
-﻿@{
+﻿@model Demo.Models.User;
+@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<h2>Register</h2>
+<form method="post" asp-controller="Home" asp-action="Privacy">
+    <label>Email:</label>
+    <input type="email" name="Email" required />
+    <br />
+    <label>Password:</label>
+    <input type="password" name="password" required />
+    <br />
+    <label>FirstName:</label>
+    <input type="text" name="FirstName" required />
+    <br />
+    <label>LastName:</label>
+    <input type="text" name="LastName" required />
+    <br />
+    <label>PhoneNumber:</label>
+    <input type="text" name="PhoneNumber" required />
+    <br />
+    <label>Role:</label>
+    <input type="text" name="Role" required />
+    <br />
+    <label>DoB:</label>
+    <input type="date" name="DoB" required />
+    <br />
+    <button type="submit">Register</button>
+</form>
+<p>@ViewBag.Message</p>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
