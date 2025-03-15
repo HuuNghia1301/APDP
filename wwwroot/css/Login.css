@@ -20,3 +20,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+.nav-link text-dark {
+    color: dodgerblue;
+}
+#view {
+    color: #f8f9fa;
+    font-size: 20px;
+
+}
+#btnsubmit {
+    margin-top: 10px;
+    width: 200px;
+}
+a{
+    color:cornflowerblue;
+}

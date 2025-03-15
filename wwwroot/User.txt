@@ -1,2 +1,0 @@
-IdUser,FirstName,LastName,Email,PhoneNumber,Password,DoB,Role,CreatedAt,
-1,Admin,admin,admin@gmail.com,123456789,$2a$11$u5NyzendjjzC1pLvYll/6OyXArizxGIoxglAhT2GDWj1v1wo8VLzS,1/13/2004,,3/12/2025 8:05:16 PM,

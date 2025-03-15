@@ -43,7 +43,7 @@ namespace Demo.Controllers
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
                 ViewBag.Message = "Login successful!";
-                return View();
+                return RedirectToAction("HomeMain", "Account"); // Điều hướng đến Account/HomeMain
             }
             ViewBag.Message = "Invalid email or password.";
             return View();
@@ -82,6 +82,7 @@ namespace Demo.Controllers
        
             _addUser.AddUser(users);
             ViewBag.Message = "Registration successful!";
+            return RedirectToAction("Login", "Account"); // Điều hướng đến Account/HomeMain
             return View();
         }
     }
