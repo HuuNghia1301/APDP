@@ -1,7 +1,0 @@
-C:\Users\ASUS\source\repos\Demo\bin\Debug\Demo.exe.config
-C:\Users\ASUS\source\repos\Demo\bin\Debug\Demo.exe
-C:\Users\ASUS\source\repos\Demo\bin\Debug\Demo.pdb
-C:\Users\ASUS\source\repos\Demo\obj\Debug\Demo.csproj.AssemblyReference.cache
-C:\Users\ASUS\source\repos\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
-C:\Users\ASUS\source\repos\Demo\obj\Debug\Demo.exe
-C:\Users\ASUS\source\repos\Demo\obj\Debug\Demo.pdb

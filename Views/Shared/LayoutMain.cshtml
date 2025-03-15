@@ -1,0 +1,6 @@
+﻿﻿@using Microsoft.AspNetCore.Session
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@RenderBody()
+
+
+@await RenderSectionAsync("Scripts", required: false)

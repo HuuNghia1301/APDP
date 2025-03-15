@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Main";
+}
+
+<h2>Home Main - Quản lý Hệ Thống</h2>
+
+<h3>Quản lý Người Dùng</h3>
+@* <a href="/User/Create" class="btn btn-success">Thêm Người Dùng</a> *@
+@* <table class="table"> *@
+@*     <thead> *@
+@*         <tr> *@
+@*             <th>ID</th> *@
+@*             <th>Họ Tên</th> *@
+@*             <th>Email</th> *@
+@*             <th>Số Điện Thoại</th> *@
+@*             <th>Vai Trò</th> *@
+@*             <th>Hành Động</th> *@
+@*         </tr> *@
+@*     </thead> *@
+@*     <tbody> *@
+@*         @foreach (var user in Model.Users) *@
+@*         { *@
+@*             <tr> *@
+@*                 <td>@user.Id</td> *@
+@*                 <td>@user.FullName</td> *@
+@*                 <td>@user.Email</td> *@
+@*                 <td>@user.PhoneNumber</td> *@
+@*                 <td>@user.Role</td> *@
+@*                 <td> *@
+@*                     <a href="/User/Edit/@user.Id" class="btn btn-warning">Sửa</a> *@
+@*                     <a href="/User/Delete/@user.Id" class="btn btn-danger">Xóa</a> *@
+@*                 </td> *@
+@*             </tr> *@
+@*         } *@
+@*     </tbody> *@
+@* </table> *@
+
+@* <h3>Quản lý Môn Học</h3> *@
+@* <a href="/Course/Create" class="btn btn-success">Thêm Môn Học</a> *@
+@* <table class="table"> *@
+@*     <thead> *@
+@*         <tr> *@
+@*             <th>ID</th> *@
+@*             <th>Tên Môn Học</th> *@
+@*             <th>Mô Tả</th> *@
+@*             <th>Hành Động</th> *@
+@*         </tr> *@
+@*     </thead> *@
+@*     <tbody> *@
+@*         @foreach (var course in Model.Courses) *@
+@*         { *@
+@*             <tr> *@
+@*                 <td>@course.Id</td> *@
+@*                 <td>@course.Name</td> *@
+@*                 <td>@course.Description</td> *@
+@*                 <td> *@
+@*                     <a href="/Course/Edit/@course.Id" class="btn btn-warning">Sửa</a> *@
+@*                     <a href="/Course/Delete/@course.Id" class="btn btn-danger">Xóa</a> *@
+@*                 </td> *@
+@*             </tr> *@
+@*         } *@
+@*     </tbody> *@
+@* </table> *@
