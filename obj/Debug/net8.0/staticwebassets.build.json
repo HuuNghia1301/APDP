@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "l8ok0HxKLtaboLhmzAk1oqKdorB5chhnYPB4qkvgFGQ=",
+  "Hash": "JjXtmj0sT6eKJCmQm0P2RnQ4OllbVf7OnJgkLfuIFkM=",
   "Source": "Demo",
   "BasePath": "_content/Demo",
   "Mode": "Default",
@@ -1317,27 +1317,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\source\\repos\\Demo\\wwwroot\\User.txt",
-      "SourceId": "Demo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\source\\repos\\Demo\\wwwroot\\",
-      "BasePath": "_content/Demo",
-      "RelativePath": "User#[.{fingerprint}]?.txt",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "tbctsfu7o0",
-      "Integrity": "qbuBzOebeDES5CC1lIz/XasP84yY+34xjBIdRzP09tY=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\User.txt"
     }
   ],
   "Endpoints": [
@@ -6422,88 +6401,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
-        }
-      ]
-    },
-    {
-      "Route": "User.tbctsfu7o0.txt",
-      "AssetFile": "C:\\Users\\ASUS\\source\\repos\\Demo\\wwwroot\\User.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "209"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"qbuBzOebeDES5CC1lIz/XasP84yY+34xjBIdRzP09tY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Mar 2025 13:05:16 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "tbctsfu7o0"
-        },
-        {
-          "Name": "label",
-          "Value": "User.txt"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-qbuBzOebeDES5CC1lIz/XasP84yY+34xjBIdRzP09tY="
-        }
-      ]
-    },
-    {
-      "Route": "User.txt",
-      "AssetFile": "C:\\Users\\ASUS\\source\\repos\\Demo\\wwwroot\\User.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "209"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"qbuBzOebeDES5CC1lIz/XasP84yY+34xjBIdRzP09tY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Mar 2025 13:05:16 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-qbuBzOebeDES5CC1lIz/XasP84yY+34xjBIdRzP09tY="
         }
       ]
     }
