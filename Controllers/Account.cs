@@ -43,7 +43,7 @@ namespace Demo.Controllers
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
                 ViewBag.Message = "Login successful!";
-                return RedirectToAction("Account","HomeMain");
+                return RedirectToAction("HomeMain", "Account"); // Điều hướng đến Account/HomeMain
             }
             ViewBag.Message = "Invalid email or password.";
             return View();
@@ -66,10 +66,11 @@ namespace Demo.Controllers
             }
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(Password);
-
+            var codeuser = _addUser.CodeUser();
             var users = new User
             {
                 IdUser = _addUser.GetAllUsers().Count + 1,
+                CodeUser = codeuser,
                 FirstName = FirstName,
                 LastName = LastName,
                 Email = Email,
@@ -82,7 +83,7 @@ namespace Demo.Controllers
        
             _addUser.AddUser(users);
             ViewBag.Message = "Registration successful!";
-            return View();
+            return RedirectToAction("Login", "Account"); 
         }
     }
 }

@@ -24,14 +24,27 @@ public class AddNewUser
     {
         var users = GetAllUsers();
         user.IdUser = users.Count > 0 ? users.Max(u => u.IdUser) + 1 : 1;
-        
-     
-
+        user.CodeUser = CodeUser();
         user.CreatedAt = DateTime.Now;
         users.Add(user);
         using var writer = new StreamWriter(_csvFilePath);
         using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
         csv.WriteRecords(users);
+    }
+    public string CodeUser()
+    {
+        var users = GetAllUsers();
+        HashSet<string> existingCodes = new (users.Select(u => u.CodeUser)); 
+
+        Random random = new Random();
+        string codename;
+        do
+        {
+            int num = random.Next(1000, 9999); 
+            codename = "BH" + num;
+        } while (existingCodes.Contains(codename)); // Lặp lại nếu mã đã tồn tại
+
+        return codename;
     }
 
     public User? GetUserByEmailOrPhoneNumber(string email, string phoneNumber)

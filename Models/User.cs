@@ -7,6 +7,8 @@ namespace Demo.Models
      
         public int IdUser { get;  set; }
 
+        public string CodeUser { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get;  set; }
@@ -25,9 +27,10 @@ namespace Demo.Models
 
         public User(){}
 
-        public User(int id, string firstName, string lastName, string email, string phoneNumber, string password, DateOnly dob, string role, DateTime createdAt)
+        public User(int id,string codeuser, string firstName, string lastName, string email, string phoneNumber, string password, DateOnly dob, string role, DateTime createdAt)
         {
             IdUser = id;
+            CodeUser = "BH" + codeuser;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -41,6 +44,11 @@ namespace Demo.Models
         public int GetId()
         {
             return IdUser;
+        }
+
+        public string GetCodeUser()
+        {
+            return CodeUser;
         }
 
         public string GetFirstName()

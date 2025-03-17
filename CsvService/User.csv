@@ -1,6 +1,2 @@
-IdUser,FirstName,LastName,Email,PhoneNumber,Password,DoB,Role,CreatedAt
-1,Nghia,Nguyen,admin@gmail.com,0325456789,$2a$11$zGpotCwIrXyZ5UcOyfI0jOtsecaNdgtJkDeyuzBOgpHNaqZZkjmJu,01/13/2004,Admin,03/12/2025 20:34:51
-2,Nguyen,nguyen,tuanng@gmail.com,0231553548,$2a$11$EPpubVCYcWWgS/Rqa7YwaubqXuKFOKZfeU2sUEPa/p2Kk6ht6wysK,03/13/2025,Teacher,03/13/2025 17:22:07
-3,Nguyen,Tuan,a@gmail.com,0345678978,$2a$11$4sxZK4Qoe64ownw8VV7CN.2fvfA1RDxH2IMp5M3iS6jiSJ/6n5fIm,03/14/2025,Student,03/14/2025 13:36:38
-4,Tuan,Tuan,aa@gmail.com,123456789,$2a$11$KmaLy.wFSvrM1J2C89y3uOHxWcSD3uz9dR6gRPLXRqwRbBV8dxBj.,01/01/0001,Student,03/15/2025 08:23:21
-5,Nghia,Nguyen,admin1@gmail.com,0325334567,$2a$11$34DId1eUhAqBVmYc9ekTY.3Fm2syQQn7W7HWxmpQYfZZ5.RcfpvgO,03/15/2025,Admin,03/15/2025 09:37:11
+IdUser,CodeUser,FirstName,LastName,Email,PhoneNumber,Password,DoB,Role,CreatedAt
+1,BH5367,Nghia,Nguyen,admin@gmail.com,0325456789,$2a$11$FA7WkN0HiCENeXMtZ9ACIeGoCu8zqA32WTkfWEd/An74rk5uTJ.8m,01/13/2004,Admin,03/17/2025 14:29:37
