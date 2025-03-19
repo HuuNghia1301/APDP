@@ -1,54 +1,138 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ASUS\\Desktop\\Demo\\",
+  "WorkspaceRootPath": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\models\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\csvservice\\user.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:csvservice\\user.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\user.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:user.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\controllers\\management\\authentication\\authmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:controllers\\management\\authentication\\authmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\controllers\\management\\utilities\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:controllers\\management\\utilities\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\controllers\\management\\utilities\\csvservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:controllers\\management\\utilities\\csvservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\controllers\\management\\utilities\\ireadwriteuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:controllers\\management\\utilities\\ireadwriteuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\idisplayinfor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\idisplayinfor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\asus\\desktop\\demo\\views\\shared\\layoutmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:views\\shared\\layoutmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\demo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:demo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Demo.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Demo.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|c:\\users\\tuanc\\onedrive\\desktop\\apdp\\.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{41AEAFE4-30AC-43F7-9A2D-0730FF4ABEE2}|Demo.csproj|solutionrelative:.dockerignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,12 +141,12 @@
       "VerticalTabListWidth": 227,
       "DocumentGroups": [
         {
-          "DockedWidth": 163,
-          "SelectedChildIndex": 12,
+          "DockedWidth": 243,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
@@ -75,165 +159,443 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "_Layout.cshtml.css",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Shared\\_Layout.cshtml.css",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Shared\\_Layout.cshtml.css",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-03-15T01:29:52.349Z"
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\utilities\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "Controllers\\Management\\utilities\\DatabaseService.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\utilities\\DatabaseService.cs",
+              "RelativeToolTip": "Controllers\\Management\\utilities\\DatabaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:48:11.313Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-15T01:28:26.074Z"
+              "Title": "CSVServices.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\utilities\\CSVServices.cs",
+              "RelativeDocumentMoniker": "Controllers\\Management\\utilities\\CSVServices.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\utilities\\CSVServices.cs*",
+              "RelativeToolTip": "Controllers\\Management\\utilities\\CSVServices.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:48:16.429Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-14T06:54:15.941Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\DashBoard\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\DashBoard\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\DashBoard\\Index.cshtml",
-              "RelativeToolTip": "Views\\DashBoard\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-14T06:46:24.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LayoutMain.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Shared\\LayoutMain.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\LayoutMain.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Shared\\LayoutMain.cshtml",
-              "RelativeToolTip": "Views\\Shared\\LayoutMain.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-14T06:43:13.928Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-14T06:31:42.469Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "User.csv",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\CsvService\\User.csv",
-              "RelativeDocumentMoniker": "CsvService\\User.csv",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\CsvService\\User.csv*",
-              "RelativeToolTip": "CsvService\\User.csv*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
-              "WhenOpened": "2025-03-13T08:24:26.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABwAAAAwAAAAAAAAAA==",
+              "Title": "AuthManagement.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\Authentication\\AuthManagement.cs",
+              "RelativeDocumentMoniker": "Controllers\\Management\\Authentication\\AuthManagement.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\Authentication\\AuthManagement.cs",
+              "RelativeToolTip": "Controllers\\Management\\Authentication\\AuthManagement.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:20:30.492Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-12T13:11:48.247Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddUser.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Models\\AddUser.cs",
-              "RelativeDocumentMoniker": "Models\\AddUser.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Models\\AddUser.cs*",
-              "RelativeToolTip": "Models\\AddUser.cs*",
-              "ViewState": "AgIAABYAAAAAAAAAAAAAwCYAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T06:33:54.759Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Account.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Controllers\\Account.cs",
-              "RelativeDocumentMoniker": "Controllers\\Account.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Controllers\\Account.cs*",
-              "RelativeToolTip": "Controllers\\Account.cs*",
-              "ViewState": "AgIAADQAAAAAAAAAAADwv00AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T06:31:08.721Z",
+              "WhenOpened": "2025-03-19T07:56:09.576Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Demo\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Demo\\Models\\User.cs*",
-              "RelativeToolTip": "Models\\User.cs*",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAYwCEAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T06:23:41.244Z",
+              "Title": "User.csv",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\User.csv",
+              "RelativeDocumentMoniker": "User.csv",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\User.csv",
+              "RelativeToolTip": "User.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2025-03-19T07:31:17.616Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-19T12:08:05.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Teacher.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Teacher.cs",
+              "RelativeDocumentMoniker": "Models\\Teacher.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Teacher.cs",
+              "RelativeToolTip": "Models\\Teacher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:40:01.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\User.cs*",
+              "RelativeToolTip": "Models\\User.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:41:10.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:33:19.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-19T11:26:24.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-19T11:33:59.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-19T11:31:47.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Student.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Student.cs",
+              "RelativeToolTip": "Models\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:40:01.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IReadWriteUser.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\utilities\\IReadWriteUser.cs",
+              "RelativeDocumentMoniker": "Controllers\\Management\\utilities\\IReadWriteUser.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\Management\\utilities\\IReadWriteUser.cs",
+              "RelativeToolTip": "Controllers\\Management\\utilities\\IReadWriteUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:48:10.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Admin.cs",
+              "RelativeDocumentMoniker": "Models\\Admin.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Admin.cs",
+              "RelativeToolTip": "Models\\Admin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:40:03.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Course.cs",
+              "RelativeDocumentMoniker": "Models\\Course.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Course.cs",
+              "RelativeToolTip": "Models\\Course.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:39:54.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:39:20.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Grade.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Grade.cs",
+              "RelativeDocumentMoniker": "Models\\Grade.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\Grade.cs",
+              "RelativeToolTip": "Models\\Grade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:39:59.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IDisplayinfor.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\IDisplayinfor.cs",
+              "RelativeDocumentMoniker": "Models\\IDisplayinfor.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\IDisplayinfor.cs",
+              "RelativeToolTip": "Models\\IDisplayinfor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:40:00.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\LoginModel.cs",
+              "RelativeDocumentMoniker": "Models\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Models\\LoginModel.cs",
+              "RelativeToolTip": "Models\\LoginModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:40:00.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAkwB8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T07:33:22.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-19T08:13:27.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-18T09:53:36.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-19T11:26:23.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "bootstrap-reboot.rtl.css",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAhwMIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-19T10:42:18.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Demo.csproj",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Demo.csproj",
+              "RelativeDocumentMoniker": "Demo.csproj",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Demo.csproj",
+              "RelativeToolTip": "Demo.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-19T10:43:12.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Login.css",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\wwwroot\\css\\Login.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\Login.css",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\wwwroot\\css\\Login.css",
+              "RelativeToolTip": "wwwroot\\css\\Login.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-19T08:28:44.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-03-19T08:26:42.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-18T09:53:36.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Demo.csproj.user",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Demo.csproj.user",
+              "RelativeDocumentMoniker": "Demo.csproj.user",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\Demo.csproj.user",
+              "RelativeToolTip": "Demo.csproj.user",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
+              "WhenOpened": "2025-03-18T09:53:36.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-18T09:53:36.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-18T09:53:35.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-03-18T09:53:35.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": ".dockerignore",
+              "DocumentMoniker": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\.dockerignore",
+              "RelativeDocumentMoniker": ".dockerignore",
+              "ToolTip": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP\\.dockerignore",
+              "RelativeToolTip": ".dockerignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-18T09:53:34.895Z"
             }
           ]
         },
         {
-          "DockedWidth": 237,
+          "DockedWidth": 157,
           "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
             }
           ]
         }
