@@ -10,9 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Management\CRUDManagetment\**" />
+    <Compile Remove="Controllers\Management\ExpenseManagetment\**" />
+    <Compile Remove="Controllers\Management\UserManagetment\**" />
     <Compile Remove="Views\Grade\**" />
+    <Content Remove="Controllers\Management\CRUDManagetment\**" />
+    <Content Remove="Controllers\Management\ExpenseManagetment\**" />
+    <Content Remove="Controllers\Management\UserManagetment\**" />
     <Content Remove="Views\Grade\**" />
+    <EmbeddedResource Remove="Controllers\Management\CRUDManagetment\**" />
+    <EmbeddedResource Remove="Controllers\Management\ExpenseManagetment\**" />
+    <EmbeddedResource Remove="Controllers\Management\UserManagetment\**" />
     <EmbeddedResource Remove="Views\Grade\**" />
+    <None Remove="Controllers\Management\CRUDManagetment\**" />
+    <None Remove="Controllers\Management\ExpenseManagetment\**" />
+    <None Remove="Controllers\Management\UserManagetment\**" />
     <None Remove="Views\Grade\**" />
   </ItemGroup>
 
@@ -25,12 +37,6 @@
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\Management\CRUDManagetment\" />
-    <Folder Include="Controllers\Management\ExpenseManagetment\" />
-    <Folder Include="Controllers\Management\UserManagetment\" />
   </ItemGroup>
 
 </Project>

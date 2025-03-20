@@ -1,9 +1,14 @@
+using Demo.Controllers.Management.Authentication;
+using Demo.Controllers.utilities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
+builder.Services.AddSingleton<CSVServices>(new CSVServices("users.csv"));
+builder.Services.AddSingleton<AuthManagement>();
 
 var app = builder.Build();
 
@@ -26,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Auth}/{action=Login}/{id?}");
+    pattern: "{controller=Auth}/{action=Register}/{id?}");
 
 app.Run();
