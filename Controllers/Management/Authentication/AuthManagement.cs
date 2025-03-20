@@ -19,7 +19,7 @@ namespace Demo.Controllers.Management.Authentication
 
             // Kiểm tra xem có user nào trùng email và password không
             return users.Any(u => u.Email.Trim() == email.Trim() && u.Password.Trim() == password.Trim());
-
+//jjj
         }
     }
 }
