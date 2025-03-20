@@ -1,4 +1,0 @@
-Id,LastName,FirstName,UserName,Address,Password,Role,Email,PhoneNumber
-1,Nguyen,Van A,nguyenvana,123 Street,pass123,Admin,nguyenvana@example.com,0123456789
-2,Tran,Thi B,tranthib,456 Avenue,pass456,User,tranthib@example.com,0987654321
-3,Le,Van C,levanc,789 Road,pass789,Teacher,levanc@example.com,0345678912

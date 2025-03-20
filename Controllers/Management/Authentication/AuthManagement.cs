@@ -1,4 +1,5 @@
 ﻿using Demo.Controllers.utilities;
+using Demo.Models;
 
 namespace Demo.Controllers.Management.Authentication
 {
@@ -6,20 +7,33 @@ namespace Demo.Controllers.Management.Authentication
     {
         private readonly CSVServices _csvService;
 
-        public AuthManagement()
+        public AuthManagement(CSVServices csvService)
         {
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "User.csv");
-            Console.WriteLine($"[DEBUG] Đường dẫn file CSV: {filePath}");
-            _csvService = new CSVServices(filePath);
+            _csvService = csvService;
         }
-        public bool Login(string email, string password)
-        {
-            // Đọc danh sách người dùng từ CSV
-            var users = _csvService.ReadUsers();
 
-            // Kiểm tra xem có user nào trùng email và password không
-            return users.Any(u => u.Email.Trim() == email.Trim() && u.Password.Trim() == password.Trim());
-//jjj
+        private List<User> ReadUsers()
+        {
+            
+            return _csvService.ReadUser();
+        }
+
+        public User? GetUserByEmailOrPhoneNumber(string email, string? phoneNumber)
+        {
+            var users = ReadUsers();
+            return users.FirstOrDefault(u => u.Email == email || u.PhoneNumber == phoneNumber);
+        }
+
+        public int GetUserCount()
+        {
+            var users = ReadUsers();
+            return users.Count;
+        }
+
+        public void WriteUsers(User user)
+        {
+           
+            _csvService.WriteUsers(user);
         }
     }
 }
