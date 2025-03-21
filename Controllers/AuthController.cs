@@ -47,7 +47,7 @@ namespace Demo.Controllers
             var user = authManager.GetUserByEmailOrPhoneNumber(email, phoneNumber);
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
-                HttpContext.Session.SetString("UserEmail", user.Email);
+                HttpContext.Session.SetString(key: "Email", user.Email ?? string.Empty);
                 return RedirectToAction("HomeMain", "Account");
             }
 

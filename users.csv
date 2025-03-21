@@ -1,3 +1,4 @@
 IdUser,CodeUser,LastName,FirstName,Address,Email,PhoneNumber,Password,Role,Created
 1,BH2929,Admin,Nghia,HN,admin@gmail.com,0325334567,$2a$11$0Ys81sJnKchoR6NQCqh92.zYuzxN4WnGRu1q4Rv01tTTVIQ0KzQs2,Admin,03/21/2025 02:13:26
 2,BH9301,Tuan,Admin,YB,admin1@gmail.com,0325456789,$2a$11$PrY7iOaA5DgL.i3mcXGsZebpQgUaw4Rq5JW7oRm3O2MRM0R0N8Jxi,Admin,03/21/2025 02:14:14
+3,BH7417,Tuan,Admin,HN,tuan@gmail.com,0321456789,$2a$11$PHc5t2AGiYU/JOR0ycfDa.E1vE59a2BXmYhdEJ.X/lazjBL2DHIKe,Admin,03/21/2025 09:37:49

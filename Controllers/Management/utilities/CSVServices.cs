@@ -42,7 +42,7 @@ namespace Demo.Controllers.utilities
         public string CodeUser()
         {
             var users = GetAllUsers();
-            HashSet<string> existingCodes = new HashSet<string>(users.Select(u => u.CodeUser));
+            HashSet<string> existingCodes = new HashSet<string>(users.Select(u => u.CodeUser ?? string.Empty));
 
             Random random = new Random();
             string codename;
@@ -91,7 +91,12 @@ namespace Demo.Controllers.utilities
 
             using var reader = new StreamReader(_csvFilePath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            return csv.GetRecords<dynamic>().Select(record => ((IDictionary<string, object>)record).Values.Select(v => v.ToString()).ToArray()).ToList();
+            return csv.GetRecords<dynamic>()
+               .Select(record => ((IDictionary<string, object>)record)
+               .Values
+               .Select(v => v?.ToString() ?? string.Empty)
+               .ToArray())
+               .ToList();
         }
     }
 }
