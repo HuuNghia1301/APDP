@@ -98,5 +98,34 @@ namespace Demo.Controllers.utilities
                .ToArray())
                .ToList();
         }
+        public void UpdateUserPassword(string email, string newPassword)
+        {
+            if (!File.Exists(_csvFilePath)) return;
+
+            var tempFile = Path.GetTempFileName();
+            using (var reader = new StreamReader(_csvFilePath))
+            using (var writer = new StreamWriter(tempFile))
+            using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                var users = csvReader.GetRecords<User>().ToList();
+                csvWriter.WriteHeader<User>();
+                csvWriter.NextRecord();
+
+                foreach (var user in users)
+                {
+                    if (user.Email == email)
+                    {
+                        user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                    }
+                    csvWriter.WriteRecord(user);
+                    csvWriter.NextRecord();
+                }
+            }
+
+            File.Delete(_csvFilePath);
+            File.Move(tempFile, _csvFilePath);
+        }
+
     }
 }

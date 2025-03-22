@@ -35,5 +35,10 @@ namespace Demo.Controllers.Management.Authentication
            
             _csvService.WriteUsers(user);
         }
+        public void ChangeUserPassword(string email, string newPassword)
+        {
+            _csvService.UpdateUserPassword(email, newPassword);
+        }
+
     }
 }

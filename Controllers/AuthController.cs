@@ -24,19 +24,25 @@ namespace Demo.Controllers
         {
             this.authManager = _authManager;
         }
+        [HttpGet]
+        public IActionResult UserPage()
+        {
+            return View();
+        }
 
         public IActionResult Login()
         {
             return View();
         }
+
         public User? GetUserByEmail(string email)
         {
             return authManager.GetUserByEmailOrPhoneNumber(email, null);
         }
+
         [HttpPost]
         public IActionResult Login(string email, string password, string phoneNumber)
         {
-
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
@@ -45,10 +51,28 @@ namespace Demo.Controllers
             }
 
             var user = authManager.GetUserByEmailOrPhoneNumber(email, phoneNumber);
-            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
+            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Admin")
             {
-                HttpContext.Session.SetString(key: "Email", user.Email ?? string.Empty);
-                return RedirectToAction("HomeMain", "Account");
+                HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
+                HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
+                HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
+
+                return RedirectToAction("Admin_Page");
+            }
+            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Student")
+            {
+                HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
+                HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
+                HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
+                return RedirectToAction("UserPage");
+            }
+
+            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Teacher")
+            {
+                HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
+                HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
+                HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
+                return RedirectToAction("TeacherPage");
             }
 
             ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác.");
@@ -63,7 +87,7 @@ namespace Demo.Controllers
                 var hashedPassword = BCrypt.Net.BCrypt.HashPassword(Password);
                 var users = new User
                 {
-                    IdUser = authManager.GetUserCount() + 1, // Changed line
+                    IdUser = authManager.GetUserCount() + 1,
                     FirstName = FirstName,
                     LastName = LastName,
                     Address = Address,
@@ -81,8 +105,51 @@ namespace Demo.Controllers
             return View();
         }
 
+        [HttpPost]
+        [HttpPost]
+        public IActionResult ChangePassword(string email, string newPassword)
+        {
+            var user = authManager.GetUserByEmailOrPhoneNumber(email, null);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Người dùng không tồn tại.");
+                return View();
+            }
+
+            authManager.ChangeUserPassword(email, newPassword);
+            ViewBag.Message = "Đổi mật khẩu thành công.";
+            return View();
+        }
+
+
+
         [HttpGet]
         public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+
+            return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public IActionResult Admin_Page()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult TeacherPage()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
         {
             return View();
         }
