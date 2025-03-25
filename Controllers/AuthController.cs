@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.SignalR;
 using Demo.Controllers.Management.Authentication;
 using Demo.Controllers.utilities;
-using Demo.Controllers.Management;
 
 
 namespace Demo.Controllers
@@ -22,7 +21,7 @@ namespace Demo.Controllers
 
         public AuthController(AuthManagement _authManager)
         {
-            this.authManager = _authManager;
+            authManager = _authManager;
         }
         [HttpGet]
         public IActionResult UserPage()
@@ -51,7 +50,7 @@ namespace Demo.Controllers
             }
 
             var user = authManager.GetUserByEmailOrPhoneNumber(email, phoneNumber);
-            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Admin")
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Admin")
             {
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
@@ -59,7 +58,7 @@ namespace Demo.Controllers
 
                 return RedirectToAction("Admin_Page");
             }
-            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Student")
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Student")
             {
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
@@ -67,7 +66,7 @@ namespace Demo.Controllers
                 return RedirectToAction("UserPage");
             }
 
-            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Teacher")
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Teacher")
             {
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
