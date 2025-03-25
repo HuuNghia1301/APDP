@@ -1,0 +1,55 @@
+﻿@model Demo.Controllers.Management.CrudManagement.UpdateUser
+
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cập nhật thông tin</h2>
+
+<form method="post" asp-action="UpdateUser">
+    <div class="form-group">
+        <label>Họ</label>
+        <input type="text" name="newFirstName" class="form-control" placeholder="Nhập họ mới (hoặc để trống)" />
+    </div>
+    
+    <div class="form-group">
+        <label>Tên</label>
+        <input type="text" name="newLastName" class="form-control" placeholder="Nhập tên mới (hoặc để trống)" />
+    </div>
+
+    <div class="form-group">
+        <label>Email hiện tại</label>
+        <input type="email" name="Email" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Email mới</label>
+        <input type="email" name="newEmail" class="form-control" placeholder="Nhập email mới (hoặc để trống)" />
+    </div>
+
+    <div class="form-group">
+        <label>Địa chỉ</label>
+        <input type="text" name="newAddress" class="form-control" placeholder="Nhập địa chỉ mới (hoặc để trống)" />
+    </div>
+
+    <div class="form-group">
+        <label>Số điện thoại</label>
+        <input type="text" name="newPhoneNumber" class="form-control" placeholder="Nhập số điện thoại mới (hoặc để trống)" />
+    </div>
+
+    <div class="form-group">
+        <label>Mật khẩu cũ</label>
+        <input type="password" name="PassWord" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Mật khẩu mới</label>
+        <input type="password" name="newPassword" class="form-control" placeholder="Nhập mật khẩu mới (hoặc để trống)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+</form>
+
+<a href="@Url.Action("Index", "Home")">Quay lại trang chủ</a>
+

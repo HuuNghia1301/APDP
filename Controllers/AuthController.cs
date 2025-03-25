@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.SignalR;
 using Demo.Controllers.Management.Authentication;
 using Demo.Controllers.utilities;
 using Demo.Controllers.Management;
+using Demo.Controllers.Management.CrudManagement;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 
 namespace Demo.Controllers
@@ -18,12 +20,14 @@ namespace Demo.Controllers
     public class AuthController : Controller
     {
         private readonly AuthManagement authManager;
+        private readonly Management.CrudManagement.UpdateUser updateUser;
 
-
-        public AuthController(AuthManagement _authManager)
+        public AuthController(AuthManagement _authManager, UpdateUser _updateUser)
         {
             this.authManager = _authManager;
+            this.updateUser = _updateUser;
         }
+
         [HttpGet]
         public IActionResult UserPage()
         {
@@ -57,7 +61,7 @@ namespace Demo.Controllers
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
                 HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
 
-                return RedirectToAction("Admin_Page");
+                return RedirectToAction("UpdateUser");
             }
             if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Student")
             {
@@ -105,7 +109,36 @@ namespace Demo.Controllers
             return View();
         }
 
-        [HttpPost]
+       public IActionResult UpdateUser(string Email , string PassWord , string newPassword = null, 
+                                string newFirstName = null, string newLastName = null, 
+                                string newEmail = null, string newAddress = null, string newPhoneNumber = null)
+{
+    var user = authManager.GetUserByEmailOrPhoneNumber(Email, null);
+    if (user == null)
+    {
+        ModelState.AddModelError("", "Người dùng không tồn tại.");
+        return View();
+    }
+
+    if (!BCrypt.Net.BCrypt.Verify(PassWord, user.Password))
+    {
+        ModelState.AddModelError("", "Mật khẩu cũ không đúng.");
+        return View();
+    }
+
+    updateUser.ChangeUserInfor(Email, PassWord, newPassword, newFirstName, newLastName, newEmail, newAddress, newPhoneNumber);
+
+    ViewBag.Message = "Cập nhật thông tin thành công.";
+    return View();
+}
+
+
+        [HttpGet]
+        public IActionResult UpdateUser()
+        {
+            return View();
+        }   
+
         [HttpPost]
         public IActionResult ChangePassword(string email, string newPassword)
         {

@@ -126,6 +126,51 @@ namespace Demo.Controllers.utilities
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
+        public void UpdateUser(string Email , string PassWord , string newPassword = null, string newFirstName = null,
+                       string newLastName = null, string newEmail = null, string newAddress = null, string newPhoneNumber = null)
+        {
+            if (!File.Exists(_csvFilePath)) return;
 
+            var tempFile = Path.GetTempFileName();
+
+            using (var reader = new StreamReader(_csvFilePath))
+            using (var writer = new StreamWriter(tempFile))
+            using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                var users = csvReader.GetRecords<User>().ToList();
+                csvWriter.WriteHeader<User>();
+                csvWriter.NextRecord();
+
+                foreach (var user in users)
+                {
+                    if (user.Email == Email && BCrypt.Net.BCrypt.Verify(PassWord, user.Password)) 
+                    {
+                        user.FirstName = newFirstName;
+                        user.LastName = newLastName;
+                        user.Email = newEmail;
+                        user.Address = newAddress;
+                        user.PhoneNumber = newPhoneNumber;
+                        user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                       
+                    }
+
+                    csvWriter.WriteRecord(user);
+                    csvWriter.NextRecord();
+                }
+            }
+
+            File.Delete(_csvFilePath);
+            File.Move(tempFile, _csvFilePath);
+        }
+
+        public void WriteUsers(List<User> users)
+        {
+            using (var writer = new StreamWriter(_csvFilePath))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(users);
+            }
+        }
     }
 }

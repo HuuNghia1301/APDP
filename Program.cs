@@ -1,4 +1,5 @@
 using Demo.Controllers.Management.Authentication;
+using Demo.Controllers.Management.CrudManagement;
 using Demo.Controllers.utilities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 builder.Services.AddSingleton<CSVServices>(new CSVServices("users.csv"));
 builder.Services.AddSingleton<AuthManagement>();
+builder.Services.AddScoped<UpdateUser>();
+
 
 var app = builder.Build();
 
