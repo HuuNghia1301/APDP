@@ -39,6 +39,5 @@ namespace Demo.Controllers.Management.Authentication
         {
             _csvService.UpdateUserPassword(email, newPassword);
         }
-
     }
 }

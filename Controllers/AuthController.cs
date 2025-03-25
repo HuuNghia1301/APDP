@@ -19,13 +19,15 @@ namespace Demo.Controllers
 {
     public class AuthController : Controller
     {
+        private readonly CSVServices csvService;
         private readonly AuthManagement authManager;
         private readonly Management.CrudManagement.UpdateUser updateUser;
 
-        public AuthController(AuthManagement _authManager, UpdateUser _updateUser)
+        public AuthController(AuthManagement _authManager, UpdateUser _updateUser , CSVServices _csvService)
         {
             this.authManager = _authManager;
             this.updateUser = _updateUser;
+            this.csvService = _csvService;
         }
 
         [HttpGet]
@@ -61,7 +63,7 @@ namespace Demo.Controllers
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
                 HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
 
-                return RedirectToAction("UpdateUser");
+                return RedirectToAction("ViewAdmin");
             }
             if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Student")
             {
@@ -184,6 +186,18 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult ChangePassword()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ShowUser()
+        {
+            return View();
+        }
+
+        public IActionResult ViewAdmin()
+        {
+            var admins = csvService.GetAllUsers(); 
             return View();
         }
     }
