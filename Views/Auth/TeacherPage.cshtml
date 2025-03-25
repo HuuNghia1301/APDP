@@ -1,0 +1,14 @@
+﻿@model Demo.Models.User
+
+@{
+    ViewData["Title"] = "TeacherPage";
+    Layout = null;
+}
+
+
+<h1>Welcom  @Context.Session.GetString("FirstName")  @Context.Session.GetString("LastName") @Context.Session.GetString("CodeUser")</h1>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

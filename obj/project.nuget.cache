@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fGviShBgZII=",
+  "dgSpecHash": "DmSNgh0jj54=",
   "success": true,
-  "projectFilePath": "C:\\Users\\trung\\OneDrive\\Máy tính\\APDP App\\APDP\\Demo.csproj",
+  "projectFilePath": "C:\\Users\\trung\\source\\repos\\APDP\\Demo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\trung\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\trung\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512",
