@@ -1,0 +1,11 @@
+﻿@model Demo.Models.User
+
+@{
+    ViewData["Title"] = "Admin_Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Welcom  @Context.Session.GetString("FirstName") + @Context.Session.GetString("LastName") @Context.Session.GetString("CodeUser")</h1>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
