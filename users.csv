@@ -4,3 +4,4 @@ IdUser,CodeUser,LastName,FirstName,Address,Email,PhoneNumber,Password,Role,Creat
 3,AD7417,Tuan,Admin,HN,tuan@gmail.com,0321456789,$2a$11$PHc5t2AGiYU/JOR0ycfDa.E1vE59a2BXmYhdEJ.X/lazjBL2DHIKe,Admin,03/21/2025 09:37:49
 4,AD8496,Nguyen,Nghia,HN,admin2@gmail.com,0123456789,$2a$11$jozonh.EOIeO8Zf207hvJ.KTOFBBHMMHMGuu1f6//B6kM8yg/14Ju,Admin,03/22/2025 10:00:16
 5,BH9924,Ton,To,HN,ton@gmail.com,023456789,$2a$11$9QbO8r2vECvnZLydL8h12.x.H6Xm68vZxkJSocTbFoYRZmF7y5q1G,Student,03/22/2025 10:07:45
+6,BH6213,Vuong,Pham,TB,vuongngu@gmail.com,032456789,$2a$11$ofwzHDp755tdDO2iS3/B6.s.hkvbHT2bCivQBlkUW1NpXVdzJN.rq,Teacher,03/28/2025 16:20:10

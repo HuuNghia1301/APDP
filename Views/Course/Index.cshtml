@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Demo.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Course</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.courseId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.courseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.courseId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.courseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { courseId = item.courseId }) |
+                    @Html.ActionLink("Delete", "Delete", new { courseId = item.courseId })
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

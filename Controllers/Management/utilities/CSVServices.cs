@@ -6,16 +6,19 @@ using Demo.Models;
 using CsvHelper;
 using System.Globalization;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Demo.Controllers.Management.CrudManagement;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Controllers.utilities
 {
     public class CSVServices : DatabaseService, IReadWriteUser
     {
         private readonly string _csvFilePath;
-
-        public CSVServices(string csvFilePath) : base(csvFilePath)
+        private readonly string _courseCsvFilePath;
+        public CSVServices(string csvFilePath, string courseCsvFilePath) : base(csvFilePath)
         {
             _csvFilePath = csvFilePath;
+            _courseCsvFilePath = courseCsvFilePath;
         }
 
         public List<User> GetAllUsers()
@@ -26,6 +29,8 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<User>().ToList();
         }
+
+       
 
         public void WriteUsers(User user)
         {
@@ -126,6 +131,93 @@ namespace Demo.Controllers.utilities
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
+        public void UpdateCourse(int id, string courseName, string Description)
+        {
+            if (!File.Exists(_courseCsvFilePath))
+            {           
+                return;
+            }
+            var tempFile = Path.GetTempFileName();
+            bool isUpdated = false;
+
+            using (var reader = new StreamReader(_courseCsvFilePath))
+            using (var writer = new StreamWriter(tempFile))
+            using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                var courses = csvReader.GetRecords<Course>().ToList();
+                csvWriter.WriteHeader<Course>();
+                csvWriter.NextRecord();
+
+                foreach (var course in courses)
+                {
+                    if (course.courseId == id)
+                    {
+                        course.courseName = courseName;
+                        course.Description = Description;
+                        isUpdated = true;
+                    }
+                    csvWriter.WriteRecord(course);
+                    csvWriter.NextRecord();
+                }
+                writer.Flush();
+            }
+            File.Delete(_courseCsvFilePath); // Xóa file cũ
+            File.Move(tempFile, _courseCsvFilePath); // Thay thế bằng file mới
+
+        }
+
+        public List<Course> GetCourses()
+        {
+            if (!File.Exists(_courseCsvFilePath)) return new List<Course>();
+
+            using var reader = new StreamReader(_courseCsvFilePath);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            return csv.GetRecords<Course>().ToList();
+        }
+        public void writeCourse(Course course)
+        {
+            var existingCourses = GetCourses();
+
+            // Tự động tăng courseId
+            course.courseId = existingCourses.Count > 0
+                ? existingCourses.Max(c => c.courseId) + 1
+                : 1;
+
+            existingCourses.Add(course);
+
+            using var writer = new StreamWriter(_courseCsvFilePath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(existingCourses);
+        }
+        public void DeleteCourse(int courseId)
+        {
+            var existingCourses = GetCourses();
+            var courseToDelete = existingCourses.FirstOrDefault(c => c.courseId == courseId);
+
+            if (courseToDelete == null)
+            {
+                Console.WriteLine($"Không tìm thấy khóa học có ID: {courseId}");
+                return;
+            }
+
+            existingCourses.RemoveAll(c => c.courseId == courseId);
+            Console.WriteLine($"Danh sách sau khi xóa: {existingCourses.Count} khóa học");
+
+            try
+            {
+                using var writer = new StreamWriter(_courseCsvFilePath, false);
+                using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+                csv.WriteRecords(existingCourses);
+                writer.Flush(); // Đảm bảo dữ liệu được ghi ngay
+                Console.WriteLine($"Đã xóa khóa học có ID: {courseId}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi ghi file: {ex.Message}");
+            }
+        }
+
         public void UpdateUser(string Email , string PassWord , string newPassword = null, string newFirstName = null,
                        string newLastName = null, string newEmail = null, string newAddress = null, string newPhoneNumber = null)
         {
@@ -163,7 +255,20 @@ namespace Demo.Controllers.utilities
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
-
+        public void DeleteUser(int userId)
+        {
+            var users = ReadUser();
+            var userToDelete = users.FirstOrDefault(u => u.IdUser == userId);
+            if (userToDelete == null)
+            {
+                Console.WriteLine($"Không tìm thấy user có email: {userId}");
+                return;
+            }
+            users.Remove(userToDelete);
+            using var writer = new StreamWriter(_csvFilePath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(users);
+        }
         public void WriteUsers(List<User> users)
         {
             using (var writer = new StreamWriter(_csvFilePath))
@@ -172,6 +277,5 @@ namespace Demo.Controllers.utilities
                 csv.WriteRecords(users);
             }
         }
-
     }
 }

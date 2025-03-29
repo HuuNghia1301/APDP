@@ -19,15 +19,18 @@ namespace Demo.Controllers
 {
     public class AuthController : Controller
     {
+        private readonly Management.CrudManagement.DeleteUser deleteUser;
         private readonly CSVServices csvService;
         private readonly AuthManagement authManager;
         private readonly Management.CrudManagement.UpdateUser updateUser;
 
-        public AuthController(AuthManagement _authManager, UpdateUser _updateUser , CSVServices _csvService)
+        public AuthController(AuthManagement _authManager, UpdateUser _updateUser , CSVServices _csvService, DeleteUser deleteUser)
         {
+            authManager = _authManager;
             this.authManager = _authManager;
             this.updateUser = _updateUser;
             this.csvService = _csvService;
+            this.deleteUser = deleteUser;
         }
 
         [HttpGet]
@@ -57,15 +60,15 @@ namespace Demo.Controllers
             }
 
             var user = authManager.GetUserByEmailOrPhoneNumber(email, phoneNumber);
-            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Admin")
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Admin")
             {
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
                 HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
 
-                return RedirectToAction("ViewAdmin");
+                return RedirectToAction("ListUser");
             }
-            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Student")
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Student")
             {
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
@@ -73,7 +76,7 @@ namespace Demo.Controllers
                 return RedirectToAction("UserPage");
             }
 
-            if ((user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) && user.Role == "Teacher")
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Teacher")
             {
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
@@ -128,10 +131,10 @@ namespace Demo.Controllers
         return View();
     }
 
-    updateUser.ChangeUserInfor(Email, PassWord, newPassword, newFirstName, newLastName, newEmail, newAddress, newPhoneNumber);
+       updateUser.ChangeUserInfor(Email, PassWord, newPassword, newFirstName, newLastName, newEmail, newAddress, newPhoneNumber);
 
-    ViewBag.Message = "Cập nhật thông tin thành công.";
-    return View();
+       ViewBag.Message = "Cập nhật thông tin thành công.";
+      return View();
 }
 
 
@@ -155,6 +158,33 @@ namespace Demo.Controllers
             ViewBag.Message = "Đổi mật khẩu thành công.";
             return View();
         }
+         [HttpGet]
+    public IActionResult ConfirmDelete(int userId)
+    {
+        var users = deleteUser.ReadUsers();
+        var user = users.FirstOrDefault(u => u.IdUser == userId);
+
+        if (user == null)
+        {
+            return NotFound("Người dùng không tồn tại.");
+        }
+
+        return View("DeleteUser", user);
+    }
+
+    [HttpPost]
+    public IActionResult DeleteUser(int userId)
+    {
+        var users = deleteUser.ReadUsers();
+        var user = users.FirstOrDefault(u => u.IdUser == userId);
+            bool isDeleted = deleteUser.DeleteUserById(userId);
+        if (!isDeleted)
+        {
+            return NotFound("Người dùng không tồn tại.");
+        }
+
+        return RedirectToAction("ListUser", "Auth");
+    }
 
 
 
@@ -167,7 +197,7 @@ namespace Demo.Controllers
         [HttpGet]
         public IActionResult Logout()
         {
-
+            HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
 
@@ -194,11 +224,15 @@ namespace Demo.Controllers
         {
             return View();
         }
-
-        public IActionResult ViewAdmin()
+        [HttpGet]
+        public IActionResult DeleteUser()
         {
-            var admins = csvService.GetAllUsers(); 
             return View();
+        }
+        public IActionResult ListUser()
+        {
+            var users = csvService.GetAllUsers();
+            return View(users);
         }
     }
 }

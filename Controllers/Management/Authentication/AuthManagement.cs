@@ -23,6 +23,7 @@ namespace Demo.Controllers.Management.Authentication
             var users = ReadUsers();
             return users.FirstOrDefault(u => u.Email == email || u.PhoneNumber == phoneNumber);
         }
+       
 
         public int GetUserCount()
         {
@@ -32,12 +33,13 @@ namespace Demo.Controllers.Management.Authentication
 
         public void WriteUsers(User user)
         {
-           
             _csvService.WriteUsers(user);
         }
         public void ChangeUserPassword(string email, string newPassword)
         {
             _csvService.UpdateUserPassword(email, newPassword);
         }
+        
+
     }
 }
