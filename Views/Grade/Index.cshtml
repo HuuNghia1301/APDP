@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Demo.Models.Grade>
+
+<h1>Danh sách điểm</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.GradeId)</th>
+            <th>@Html.DisplayNameFor(model => model.Score)</th>
+            <th>@Html.DisplayNameFor(model => model.UserId)</th>  <!-- Thêm cột UserId -->
+            <th>@Html.DisplayNameFor(model => model.CourseId)</th> <!-- Thêm cột CourseId -->
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.GradeId)</td>
+                <td>@Html.DisplayFor(modelItem => item.Score)</td>
+                <td>@Html.DisplayFor(modelItem => item.UserId)</td>  <!-- Hiển thị UserId -->
+                <td>@Html.DisplayFor(modelItem => item.CourseId)</td> <!-- Hiển thị CourseId -->
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.GradeId }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.GradeId }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.GradeId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

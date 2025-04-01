@@ -16,7 +16,8 @@ builder.Services.AddSingleton<CSVServices>(serviceProvider =>
 {
     var userCsvFilePath = configuration["CsvFiles:Users"] ?? "users.csv";
     var courseCsvFilePath = configuration["CsvFiles:Courses"] ?? "courses.csv";
-    return new CSVServices(userCsvFilePath, courseCsvFilePath);
+    var gradeCsvFilePath = configuration["CsvFiles:Grade"] ?? "grade.csv";
+    return new CSVServices(userCsvFilePath, courseCsvFilePath, gradeCsvFilePath);
 });
 // Đăng ký AuthManagement
 builder.Services.AddSingleton<AuthManagement>();

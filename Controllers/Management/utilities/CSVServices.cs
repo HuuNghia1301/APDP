@@ -13,10 +13,14 @@ namespace Demo.Controllers.utilities
     {
         private readonly string _csvFilePath;
         private readonly string _courseCsvFilePath;
-        public CSVServices(string csvFilePath, string courseCsvFilePath) : base(csvFilePath)
+        private readonly string _gradeCsvFilePath;  
+        public CSVServices(string csvFilePath, string courseCsvFilePath, string gradeCsvFilePath) : base(csvFilePath)
         {
             _csvFilePath = csvFilePath;
             _courseCsvFilePath = courseCsvFilePath;
+            _gradeCsvFilePath = gradeCsvFilePath;
+
+
         }
 
         public List<User> GetAllUsers()
@@ -27,8 +31,21 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<User>().ToList();
         }
+           public List<Grade> GetAllGrade()
+             {
+        if (!File.Exists(_gradeCsvFilePath)) return new List<Grade>();  // Kiểm tra tệp tồn tại
 
-       
+        using var reader = new StreamReader(_gradeCsvFilePath);
+        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        csv.Context.Configuration.HeaderValidated = null;  // Vô hiệu hóa kiểm tra header
+        csv.Context.Configuration.MissingFieldFound = null;  // Vô hiệu hóa kiểm tra trường thiếu
+
+        return csv.GetRecords<Grade>().ToList();  // Đọc và trả về danh sách Grade
+          }
+
+
+
+
 
         public void WriteUsers(User user)
         {
@@ -216,6 +233,98 @@ namespace Demo.Controllers.utilities
             }
         }
 
+        #region Các phương thức xử lý Grade
+        // Đọc tất cả Grade từ file CSV
+        public List<Grade> GetAllGrades()
+        {
+            if (!File.Exists(_gradeCsvFilePath)) return new List<Grade>();
+            using var reader = new StreamReader(_gradeCsvFilePath);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            var grades = csv.GetRecords<Grade>().ToList();
+            var courses = GetCourses();
+
+            foreach (var grade in grades)
+            {
+                grade.CourseName = courses.FirstOrDefault(c => c.courseId == grade.CourseId)?.courseName ?? "Unknown";
+            }
+            return grades;
+        }
+
+        // Thêm mới Grade vào file CSV
+        public void AddGrade(Grade grade)
+        {
+            //var grades = GetAllGrades();
+            //grade.GradeId = grades.Count > 0 ? grades.Max(g => g.GradeId) + 1 : 1;
+            //grades.Add(grade);
+
+            //// Ghi dữ liệu vào file CSV
+            //WriteGradesToFile(grades);
+            var grades = GetAllGrades();
+            grade.GradeId = grades.Count > 0 ? grades.Max(g => g.GradeId) + 1 : 1;
+            grades.Add(grade);
+
+            using var writer = new StreamWriter(_gradeCsvFilePath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(grades);
+        }
+
+        // Cập nhật Grade dựa trên GradeId
+        public bool UpdateGrade(int gradeId, Grade updatedGrade)
+        {
+            var grades = GetAllGrades();
+            var grade = grades.FirstOrDefault(g => g.GradeId == gradeId);
+
+            if (grade == null)
+                return false;
+
+            // Cập nhật thông tin
+            grade.Score = updatedGrade.Score;
+            grade.UserId = updatedGrade.UserId;
+            grade.CourseId = updatedGrade.CourseId;
+
+            // Ghi lại file CSV
+            WriteGradesToFile(grades);
+            return true;
+        }
+
+        // Xóa Grade theo GradeId
+        public bool DeleteGradeById(int gradeId)  // Đổi tham số sang int
+        {
+            var grades = GetAllGrades();
+            var gradeToDelete = grades.FirstOrDefault(g => g.GradeId == gradeId);
+
+            if (gradeToDelete == null)
+                return false;
+
+            grades.Remove(gradeToDelete);
+
+            // Ghi lại file CSV sau khi xóa
+            WriteGradesToFile(grades);
+            return true;
+        }
+
+
+        // Hàm ghi lại danh sách Grade vào file CSV
+        private void WriteGradesToFile(List<Grade> grades)
+        {
+            using var writer = new StreamWriter(_gradeCsvFilePath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(grades);
+        }
+
+        
+
+        internal void UpdateGrade(int gradeId, int studentId, int courseId, double score)
+        {
+            throw new NotImplementedException();
+        }
+        public string GetCourseNameById(int courseId)
+        {
+            var courses = GetCourses();
+            return courses.FirstOrDefault(c => c.courseId == courseId)?.courseName ?? "Unknown";
+        }
+
+        #endregion
 
     }
 }
