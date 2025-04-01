@@ -37,10 +37,6 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<User>().ToList();
         }
-
-
-
-
         public void WriteUsers(User user)
         {
             var users = GetAllUsers();
@@ -69,8 +65,6 @@ namespace Demo.Controllers.utilities
 
             return codename;
         }
-
-        
 
         public void WriteUser(List<User> users)
         {
@@ -134,7 +128,7 @@ namespace Demo.Controllers.utilities
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
-        public void UpdateCourse(int id, string courseName, string Description)
+        public void UpdateCourse(int id, string courseName, string Description,string selectedTeacherId)
         {
             if (!File.Exists(_courseCsvFilePath))
             {           
@@ -147,6 +141,7 @@ namespace Demo.Controllers.utilities
             using (var writer = new StreamWriter(tempFile))
             using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
             using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+
             {
                 var courses = csvReader.GetRecords<Course>().ToList();
                 csvWriter.WriteHeader<Course>();
@@ -158,6 +153,7 @@ namespace Demo.Controllers.utilities
                     {
                         course.courseName = courseName;
                         course.Description = Description;
+                        course.StringnameTeacher = selectedTeacherId;
                         isUpdated = true;
                     }
                     csvWriter.WriteRecord(course);
@@ -173,7 +169,6 @@ namespace Demo.Controllers.utilities
         public List<Course> GetCourses()
         {
             if (!File.Exists(_courseCsvFilePath)) return new List<Course>();
-
             using var reader = new StreamReader(_courseCsvFilePath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<Course>().ToList();
@@ -254,7 +249,6 @@ namespace Demo.Controllers.utilities
                     csvWriter.NextRecord();
                 }
             }
-
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
@@ -300,5 +294,20 @@ namespace Demo.Controllers.utilities
                 csv.WriteRecords(users);
             }
         }
+        public User? GetUserInfoByCode(string codeUser)
+        {
+            // Lấy tất cả người dùng từ CSV
+            var users = GetAllUsers();
+
+            // Tìm kiếm người dùng theo CodeUser
+            return users.FirstOrDefault(u => u.CodeUser == codeUser);
+        }
+        public List<User> GetTeachers()
+        {
+            var users = GetAllUsers(); // Lấy danh sách người dùng từ file CSV
+            return users.Where(u => u.Role == "Teacher").ToList(); // Lọc người dùng có Role là "Teacher"
+        }
+
+
     }
 }

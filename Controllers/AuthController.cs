@@ -72,9 +72,8 @@ namespace Demo.Controllers
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
                 HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
-                return RedirectToAction("UserPage");
+                return RedirectToAction("GetUserInfo", "Student");
             }
-
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Teacher")
             {
                 HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
@@ -107,7 +106,7 @@ namespace Demo.Controllers
                 };
                 ViewBag.Message = "Đăng ký thành công";
                 authManager.WriteUsers(users);
-                return RedirectToAction("Login");
+                return RedirectToAction("ListUser");
             }
             ModelState.AddModelError("", "Email hoặc số điện thoại đã tồn tại.");
             return View();

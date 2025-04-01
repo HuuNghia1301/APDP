@@ -2,6 +2,8 @@
 {
     public interface IDisplayinfor
     {
+       
+
 
     }
 }

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Course</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -21,6 +21,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StringnameTeacher)
             </th>
             <th></th>
         </tr>
@@ -38,9 +41,11 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.StringnameTeacher)
+            </td>
+            <td>
                     @Html.ActionLink("Edit", "Edit", new { courseId = item.courseId }) |
                     @Html.ActionLink("Delete", "Delete", new { courseId = item.courseId })
-
             </td>
         </tr>
 }

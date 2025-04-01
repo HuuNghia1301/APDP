@@ -1,3 +1,6 @@
-courseId,courseName,Description
-1,APDP100,123
-2,Toán rời rạc,123
+courseId,courseName,Description,StringnameTeacher
+1,APDP100,123,Nguyen Tuan
+2,Toán rời rạc,123,Nguyen Tuan
+3,Toán rời rạc,123,Nguyen Tuan
+8,Toán rời rạc,123,nghia Huu
+9,Toán rời rạc,là một môn toán,Nguyen Tuan

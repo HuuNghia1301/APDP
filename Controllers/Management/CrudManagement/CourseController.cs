@@ -27,29 +27,39 @@ namespace Demo.Controllers.Management.CrudManagement
         [HttpGet]
         public IActionResult Create()
         {
+            // Lấy danh sách giáo viên từ dịch vụ
+            var teachers = _csvServices.GetTeachers(); //  GetTeachers() là phương thức lấy danh sách giảng viên
+            // Truyền danh sách giáo viên vào ViewData
+            ViewData["Teachers"] = teachers;
+
             return View();
         }
-
         // Xử lý thêm khóa học (POST)
         [HttpPost]
-        public IActionResult Create(string courseName, string Description)
+        public IActionResult Create(string courseName, string Description, string StringnameTeacher) // Đổi tên biến
         {
-            if (string.IsNullOrWhiteSpace(courseName) || string.IsNullOrWhiteSpace(Description))
+            if (string.IsNullOrWhiteSpace(courseName) || string.IsNullOrWhiteSpace(Description) || string.IsNullOrEmpty(StringnameTeacher))
             {
-                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin.");
+                ModelState.AddModelError("", "Please fill in all fields.");
+
+                ViewData["Teachers"] = _csvServices.GetTeachers();
                 return View();
             }
-
+           
             var course = new Course
             {
                 courseName = courseName,
-                Description = Description
+                Description = Description,
+                StringnameTeacher = StringnameTeacher  // Dữ liệu sẽ đúng
             };
 
-            _csvServices.writeCourse(course); // Ghi dữ liệu vào file CSV
+            _csvServices.writeCourse(course);
 
-            return RedirectToAction("Index"); // Quay về trang danh sách
+            return RedirectToAction("Index");
         }
+
+
+
 
         // Hiển thị trang xác nhận xóa khóa học
         [HttpGet]
@@ -66,7 +76,6 @@ namespace Demo.Controllers.Management.CrudManagement
         }
 
         // Xử lý xóa khóa học (POST)
-
 
         [HttpPost]
         public IActionResult DeleteConfirmed(int courseId)
@@ -93,7 +102,7 @@ namespace Demo.Controllers.Management.CrudManagement
             return View(course); // Trả về View để chỉnh sửa khóa học
         }
         [HttpPost]
-        public IActionResult Edit(int courseId, string courseName, string Description)
+        public IActionResult Edit(int courseId, string courseName, string Description, string StringnameTeacher)
         {
             if (courseId == 0)
             {
@@ -104,7 +113,7 @@ namespace Demo.Controllers.Management.CrudManagement
                 ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin.");
                 return View();
             }
-            _csvServices.UpdateCourse(courseId, courseName, Description); // Gọi hàm cập nhật trong CSVServices
+            _csvServices.UpdateCourse(courseId, courseName, Description, StringnameTeacher); // Gọi hàm cập nhật trong CSVServices
             return RedirectToAction("Index");
 
         }
