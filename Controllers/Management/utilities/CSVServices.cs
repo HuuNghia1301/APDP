@@ -29,8 +29,17 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<User>().ToList();
         }
+        public List<User> ReadUser()
+        {
+            if (!File.Exists(_csvFilePath)) return new List<User>();
 
-       
+            using var reader = new StreamReader(_csvFilePath);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            return csv.GetRecords<User>().ToList();
+        }
+
+
+
 
         public void WriteUsers(User user)
         {
@@ -43,6 +52,7 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
             csv.WriteRecords(users);
         }
+        
 
         public string CodeUser()
         {
@@ -60,14 +70,7 @@ namespace Demo.Controllers.utilities
             return codename;
         }
 
-        public List<User> ReadUser()
-        {
-            if (!File.Exists(_csvFilePath)) return new List<User>();
-
-            using var reader = new StreamReader(_csvFilePath);
-            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            return csv.GetRecords<User>().ToList();
-        }
+        
 
         public void WriteUser(List<User> users)
         {
@@ -255,33 +258,40 @@ namespace Demo.Controllers.utilities
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
-        public bool DeleteUser(int userId)
+        public void DeleteUser(int IdUser)
         {
-            var users = GetAllUsers();
-            var userToDelete = users.FirstOrDefault(u => u.IdUser == userId);
+            if (IdUser <= 0)
+            {
+                Console.WriteLine("⚠ ID không hợp lệ!");
+                return;
+            }
+
+            var existingUsers = GetAllUsers();
+            var userToDelete = existingUsers.FirstOrDefault(c => c.IdUser == IdUser);
+
             if (userToDelete == null)
             {
-                Console.WriteLine($"Không tìm thấy user với ID: {userId}");
-                return false;
+                Console.WriteLine($"Không tìm thấy người dùng có ID: {IdUser}");
+                return;
             }
 
-            users.Remove(userToDelete);
+            existingUsers.RemoveAll(c => c.IdUser == IdUser);
+            Console.WriteLine($"Danh sách sau khi xóa: {existingUsers.Count} người dùng");
 
-            
-            //for (int i = 0; i < users.Count; i++)
-            //{
-            //    users[i].IdUser = i + 1;
-            //}
-
-            WriteUsers(users);
-
-            Console.WriteLine("Danh sách user sau khi xóa:");
-            foreach (var user in users)
+            try
             {
-                Console.WriteLine($"ID: {user.IdUser}, Email: {user.Email}");
+                using var writer = new StreamWriter(_csvFilePath, false);
+                using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+                csv.WriteRecords(existingUsers);
+                writer.Flush(); // Đảm bảo dữ liệu được ghi ngay
+                Console.WriteLine($"✅ Đã xóa người dùng có ID: {IdUser}");
             }
-            return true;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Lỗi khi ghi file: {ex.Message}");
+            }
         }
+
         public void WriteUsers(List<User> users)
         {
             using (var writer = new StreamWriter(_csvFilePath))

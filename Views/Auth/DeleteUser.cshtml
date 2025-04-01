@@ -73,9 +73,13 @@
             @Html.DisplayFor(model => model.Created)
         </dd>
     </dl>
-    
-    <form asp-action="DeleteUser">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+
+    <form asp-action="DeleteUserConfirmed" method="post">
+        <input type="hidden" name="IdUser" value="@Model.IdUser" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        |
+        <a asp-action="ListUser" class="btn btn-secondary">Back to List</a>
     </form>
+
+    
 </div>

@@ -159,31 +159,39 @@ namespace Demo.Controllers
         }
 
         [HttpGet]
-        public IActionResult ConfirmDelete(int userId)
+        public IActionResult DeleteUser(int IdUser)
         {
-            var user = csvService.GetAllUsers().FirstOrDefault(u => u.IdUser == userId);
-            if (user == null)
+            var userToDelete = csvService.ReadUser().FirstOrDefault(u => u.IdUser == IdUser);
+
+            if (userToDelete == null)
             {
-                return NotFound("Người dùng không tồn tại.");
+                return NotFound($"Không tìm thấy người dùng có ID: {IdUser}");
             }
-            
-            return View("DeleteUser", user);
+
+            return View(userToDelete); // Truyền thông tin người dùng sang View
+
         }
 
-        // Action thực hiện xóa user (POST)
         [HttpPost]
-        public IActionResult DeleteUser(int userId)
+        public IActionResult DeleteUserConfirmed(int IdUser) // Đổi tên từ userId thành IdUser
         {
-            Console.WriteLine($"🔍 Đang xóa user có ID: {userId}");
-            if (!csvService.DeleteUser(userId))
+            if (IdUser <= 0)
             {
-                return NotFound("Người dùng không tồn tại.");
+                ModelState.AddModelError("", "ID không hợp lệ.");
+               
             }
-            // Sau khi xóa thành công, chuyển về trang danh sách người dùng
-            return RedirectToAction("ListUser", "Auth");
+
+            var userToDelete = authManager.GetUserById(IdUser);
+            if (userToDelete == null)
+            {
+                return NotFound($"Không tìm thấy người dùng có ID: {IdUser}");
+            }
+
+            Console.WriteLine($"🗑 Đang xóa người dùng có ID: {IdUser}");
+            csvService.DeleteUser(IdUser);
+
+            return RedirectToAction("ListUser");
         }
-
-
 
         [HttpGet]
         public IActionResult Register()
@@ -221,11 +229,7 @@ namespace Demo.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult DeleteUser()
-        {
-            return View();
-        }
+        
         public IActionResult ListUser()
         {
             var users = csvService.GetAllUsers();

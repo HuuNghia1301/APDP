@@ -23,8 +23,11 @@ namespace Demo.Controllers.Management.Authentication
             var users = ReadUsers();
             return users.FirstOrDefault(u => u.Email == email || u.PhoneNumber == phoneNumber);
         }
-       
-
+        public User? GetUserById(int id)
+        {
+            var users = ReadUsers();
+            return users.FirstOrDefault(u => u.IdUser == id);
+        }
         public int GetUserCount()
         {
             var users = ReadUsers();
