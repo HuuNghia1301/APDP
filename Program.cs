@@ -22,7 +22,7 @@ builder.Services.AddSingleton<CSVServices>(serviceProvider =>
 // Đăng ký AuthManagement
 builder.Services.AddSingleton<AuthManagement>();
 builder.Services.AddScoped<UpdateUser>();
-builder.Services.AddScoped<DeleteUser>();
+
 
 
 

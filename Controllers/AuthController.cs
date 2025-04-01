@@ -19,18 +19,17 @@ namespace Demo.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly Management.CrudManagement.DeleteUser deleteUser;
+        
         private readonly CSVServices csvService;
         private readonly AuthManagement authManager;
         private readonly Management.CrudManagement.UpdateUser updateUser;
 
-        public AuthController(AuthManagement _authManager, UpdateUser _updateUser , CSVServices _csvService, DeleteUser deleteUser)
+        public AuthController(AuthManagement _authManager, UpdateUser _updateUser , CSVServices _csvService)
         {
-            authManager = _authManager;
             this.authManager = _authManager;
             this.updateUser = _updateUser;
             this.csvService = _csvService;
-            this.deleteUser = deleteUser;
+            
         }
 
         [HttpGet]
@@ -158,33 +157,31 @@ namespace Demo.Controllers
             ViewBag.Message = "Đổi mật khẩu thành công.";
             return View();
         }
-         [HttpGet]
-    public IActionResult ConfirmDelete(int userId)
-    {
-        var users = deleteUser.ReadUsers();
-        var user = users.FirstOrDefault(u => u.IdUser == userId);
 
-        if (user == null)
+        [HttpGet]
+        public IActionResult ConfirmDelete(int userId)
         {
-            return NotFound("Người dùng không tồn tại.");
+            var user = csvService.GetAllUsers().FirstOrDefault(u => u.IdUser == userId);
+            if (user == null)
+            {
+                return NotFound("Người dùng không tồn tại.");
+            }
+            
+            return View("DeleteUser", user);
         }
 
-        return View("DeleteUser", user);
-    }
-
-    [HttpPost]
-    public IActionResult DeleteUser(int userId)
-    {
-        var users = deleteUser.ReadUsers();
-        var user = users.FirstOrDefault(u => u.IdUser == userId);
-            bool isDeleted = deleteUser.DeleteUserById(userId);
-        if (!isDeleted)
+        // Action thực hiện xóa user (POST)
+        [HttpPost]
+        public IActionResult DeleteUser(int userId)
         {
-            return NotFound("Người dùng không tồn tại.");
+            Console.WriteLine($"🔍 Đang xóa user có ID: {userId}");
+            if (!csvService.DeleteUser(userId))
+            {
+                return NotFound("Người dùng không tồn tại.");
+            }
+            // Sau khi xóa thành công, chuyển về trang danh sách người dùng
+            return RedirectToAction("ListUser", "Auth");
         }
-
-        return RedirectToAction("ListUser", "Auth");
-    }
 
 
 

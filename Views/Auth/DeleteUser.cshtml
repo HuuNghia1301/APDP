@@ -75,8 +75,7 @@
     </dl>
     
     <form asp-action="DeleteUser">
-       
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a href="@Url.Action("ListUser", "Auth")">Quay lại trang chủ</a>
+        <a asp-action="Index">Back to List</a>
     </form>
 </div>

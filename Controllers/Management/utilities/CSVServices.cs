@@ -255,19 +255,32 @@ namespace Demo.Controllers.utilities
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
-        public void DeleteUser(int userId)
+        public bool DeleteUser(int userId)
         {
-            var users = ReadUser();
+            var users = GetAllUsers();
             var userToDelete = users.FirstOrDefault(u => u.IdUser == userId);
             if (userToDelete == null)
             {
-                Console.WriteLine($"Không tìm thấy user có email: {userId}");
-                return;
+                Console.WriteLine($"Không tìm thấy user với ID: {userId}");
+                return false;
             }
+
             users.Remove(userToDelete);
-            using var writer = new StreamWriter(_csvFilePath);
-            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-            csv.WriteRecords(users);
+
+            
+            //for (int i = 0; i < users.Count; i++)
+            //{
+            //    users[i].IdUser = i + 1;
+            //}
+
+            WriteUsers(users);
+
+            Console.WriteLine("Danh sách user sau khi xóa:");
+            foreach (var user in users)
+            {
+                Console.WriteLine($"ID: {user.IdUser}, Email: {user.Email}");
+            }
+            return true;
         }
         public void WriteUsers(List<User> users)
         {

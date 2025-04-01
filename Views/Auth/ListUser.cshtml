@@ -80,9 +80,9 @@
                 @Html.DisplayFor(modelItem => item.Created)
             </td>
             <td>
-                    @Html.ActionLink("UpdateUser", "UpdateUser", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("UpdateUser", "UpdateUser", new { IdUser = item.IdUser }) |
                
-                @Html.ActionLink("DeleteUser", "DeleteUser", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("DeleteUser", "DeleteUser", new { IdUser = item.IdUser })
             </td>
         </tr>
 }
