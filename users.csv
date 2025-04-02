@@ -7,3 +7,4 @@ IdUser,CodeUser,LastName,FirstName,Address,Email,PhoneNumber,Password,Role,Creat
 11,BH5167,Tuan,Nguyen,aaa,test1@gmail.com,123444121,$2a$11$bRI/t//c2TClKoBSPwIOYOD8pL0gb78L9Lo6A48dQ09gRONsaG6Bu,Teacher,04/01/2025 18:50:10
 12,BH2932,Huu,nghia,aaa,test11@gmail.com,123,$2a$11$YWGM/i11HcR95N6SP2PsYuS8h2c5bqW9zRZ9qFXSpZCKQgjEcLTji,Teacher,04/01/2025 23:54:33
 13,BH1064,To," Trung Ton",hanoi,ton@gmail.com,01234444,$2a$11$2aWKmvH0YJtA8K7SHtkdxu6coNRp91HyRkBMaiTAPPyLeI7uJ2A0W,Teacher,04/02/2025 00:22:33
+14,BH3784,To," Trung Ton",hanoi,ton1@gmail.com,012344445,$2a$11$uSsXmfBgXNjHeAgnDettOORtzlsL./VHMp6QZ8k5VGkWR1DMcXhR6,Student,04/02/2025 02:57:33

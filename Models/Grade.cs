@@ -2,9 +2,11 @@
 {
     public class Grade: IDisplayinfor
     {
-        public string? GradeId { get; set; }
-        public string? StudentID { get; set; }
-        public string? courseID { get; set; }
+        public int? GradeId { get; set; }
+        public double? Score { get; set; }
+        public string? CodeUserStudent { get; set; }
+        public string? CourseName { get; set; }
+
         public string ShowInfor()
         {
             return "Grade";

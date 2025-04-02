@@ -8,6 +8,8 @@ using System.Globalization;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using Demo.Controllers.Management.CrudManagement;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Policy;
+using System.Diagnostics;
 
 namespace Demo.Controllers.utilities
 {
@@ -15,10 +17,12 @@ namespace Demo.Controllers.utilities
     {
         private readonly string _csvFilePath;
         private readonly string _courseCsvFilePath;
-        public CSVServices(string csvFilePath, string courseCsvFilePath) : base(csvFilePath)
+        private readonly string _gradeCsvFilePath;
+        public CSVServices(string csvFilePath, string courseCsvFilePath, string gradeCsvFilePath) : base(csvFilePath)
         {
             _csvFilePath = csvFilePath;
             _courseCsvFilePath = courseCsvFilePath;
+            _gradeCsvFilePath = gradeCsvFilePath;
         }
 
         public List<User> GetAllUsers()
@@ -165,6 +169,40 @@ namespace Demo.Controllers.utilities
             File.Move(tempFile, _courseCsvFilePath); // Thay thế bằng file mới
 
         }
+        public void updateGrade(int GradeId , double Score, string CodeUserStudent , string CourseName)
+        {
+            if (!File.Exists(_gradeCsvFilePath))
+            {
+                return;
+            }
+            var tempFile = Path.GetTempFileName();
+            bool isUpdated = false;
+            using (var reader = new StreamReader(_gradeCsvFilePath))
+            using (var writer = new StreamWriter(tempFile))
+            using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                var grades = csvReader.GetRecords<Grade>().ToList();
+                csvWriter.WriteHeader<Grade>();
+                csvWriter.NextRecord();
+
+                foreach (var grade in grades)
+                {
+                    if ( grade.GradeId == GradeId)
+                    {
+                        grade.CodeUserStudent = CodeUserStudent;
+                        grade.Score = Score;
+                        grade.CourseName = CourseName;
+                        isUpdated = true;
+                    }
+                    csvWriter.WriteRecord(grade);
+                    csvWriter.NextRecord();
+                }
+                writer.Flush();
+            }
+            File.Delete(_gradeCsvFilePath); // Xóa file cũ
+            File.Move(tempFile, _gradeCsvFilePath); // Thay thế bằng file mới
+        }
 
         public List<Course> GetCourses()
         {
@@ -172,6 +210,13 @@ namespace Demo.Controllers.utilities
             using var reader = new StreamReader(_courseCsvFilePath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<Course>().ToList();
+        }
+        public List<Grade> GetGrades()
+        {
+            if (!File.Exists(_gradeCsvFilePath)) return new List<Grade>();
+            using var reader = new StreamReader(_gradeCsvFilePath);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            return csv.GetRecords<Grade>().ToList();
         }
         public void writeCourse(Course course)
         {
@@ -187,6 +232,18 @@ namespace Demo.Controllers.utilities
             using var writer = new StreamWriter(_courseCsvFilePath);
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
             csv.WriteRecords(existingCourses);
+        }
+        public void writeGrade(Grade grade)
+        {
+            var existingGrades = GetGrades();
+            // Tự động tăng gradeId
+            grade.GradeId = existingGrades.Count > 0
+                ? existingGrades.Max(c => c.GradeId) + 1
+                : 1;
+            existingGrades.Add(grade);
+            using var writer = new StreamWriter(_gradeCsvFilePath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(existingGrades);
         }
         public void DeleteCourse(int courseId)
         {
@@ -302,11 +359,64 @@ namespace Demo.Controllers.utilities
             // Tìm kiếm người dùng theo CodeUser
             return users.FirstOrDefault(u => u.CodeUser == codeUser);
         }
+
         public List<User> GetTeachers()
         {
             var users = GetAllUsers(); // Lấy danh sách người dùng từ file CSV
             return users.Where(u => u.Role == "Teacher").ToList(); // Lọc người dùng có Role là "Teacher"
         }
+        public List<User> GetStudents()
+        {
+            try
+            {
+                var users = GetAllUsers(); // Lấy danh sách người dùng từ file CSV
+                return users.Where(u => u.Role == "Student").ToList(); // Lọc người dùng có Role là "Student"
+            }
+            catch (Exception ex)
+            {
+                // Log lỗi hoặc thông báo lỗi nếu có sự cố trong việc lấy danh sách người dùng
+                Console.WriteLine($"Error getting students: {ex.Message}");
+                return new List<User>(); // Trả về danh sách trống nếu có lỗi
+            }
+        }
+
+        public List<string> GetCoursesName()
+        {
+            var courses = GetCourses();
+            if (courses == null || !courses.Any())
+            {
+                return new List<string>(); // Nếu không có môn học, trả về danh sách rỗng
+            }
+            return courses.Select(u => u.courseName).ToList(); // Trả về danh sách tên môn học
+        }
+        public void DeleteGrade(int gradeId)
+        {
+            var existingCourses = GetGrades();
+            var courseToDelete = existingCourses.FirstOrDefault(c => c.GradeId == gradeId);
+
+            if (courseToDelete == null)
+            {
+                return;
+            }
+            existingCourses.RemoveAll(c => c.GradeId == gradeId);        
+            try
+            {
+                using var writer = new StreamWriter(_gradeCsvFilePath, false);
+                using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+                csv.WriteRecords(existingCourses);
+                writer.Flush(); // Đảm bảo dữ liệu được ghi ngay
+            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi ghi file: {ex.Message}");
+            }
+        }
+
+
+
+
+
 
 
     }

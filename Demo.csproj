@@ -13,22 +13,18 @@
     <Compile Remove="Controllers\Management\CRUDManagetment\**" />
     <Compile Remove="Controllers\Management\ExpenseManagetment\**" />
     <Compile Remove="Controllers\Management\UserManagetment\**" />
-    <Compile Remove="Views\Grade\**" />
     <Compile Remove="Views\Home\**" />
     <Content Remove="Controllers\Management\CRUDManagetment\**" />
     <Content Remove="Controllers\Management\ExpenseManagetment\**" />
     <Content Remove="Controllers\Management\UserManagetment\**" />
-    <Content Remove="Views\Grade\**" />
     <Content Remove="Views\Home\**" />
     <EmbeddedResource Remove="Controllers\Management\CRUDManagetment\**" />
     <EmbeddedResource Remove="Controllers\Management\ExpenseManagetment\**" />
     <EmbeddedResource Remove="Controllers\Management\UserManagetment\**" />
-    <EmbeddedResource Remove="Views\Grade\**" />
     <EmbeddedResource Remove="Views\Home\**" />
     <None Remove="Controllers\Management\CRUDManagetment\**" />
     <None Remove="Controllers\Management\ExpenseManagetment\**" />
     <None Remove="Controllers\Management\UserManagetment\**" />
-    <None Remove="Views\Grade\**" />
     <None Remove="Views\Home\**" />
   </ItemGroup>
 
