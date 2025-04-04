@@ -3,7 +3,7 @@
     public interface IDisplayinfor
     {
        
-
+        string ShowInfor(); 
 
     }
 }

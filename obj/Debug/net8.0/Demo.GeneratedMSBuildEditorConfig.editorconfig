@@ -17,105 +17,105 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Demo
 build_property.RootNamespace = Demo
-build_property.ProjectDir = C:\Users\tuanc\OneDrive\Desktop\APDP\
+build_property.ProjectDir = C:\Users\ASUS\Desktop\APDP\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\tuanc\OneDrive\Desktop\APDP
+build_property.MSBuildProjectDirectory = C:\Users\ASUS\Desktop\APDP
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/Admin_Page.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/Admin_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxBZG1pbl9QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/ChangePassword.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/DeleteUser.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/DeleteUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxEZWxldGVVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/ListUser.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/ListUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMaXN0VXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/Login.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/Register.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/TeacherPage.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/TeacherPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxUZWFjaGVyUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/UpdateUser.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/UpdateUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxVcGRhdGVVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Auth/UserPage.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Auth/UserPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxVc2VyUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Course/Create.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Course/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Course/Delete.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Course/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Course/Edit.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Course/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Course/Index.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Course/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Grade/Create.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Grade/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Grade/Delete.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Grade/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZGVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Grade/Edit.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Grade/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZGVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Grade/Index.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Grade/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZGVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Student/GetUserInfo.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Student/GetUserInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxHZXRVc2VySW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/_ViewImports.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/_ViewStart.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Shared/_Layout.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xwylo3ageb
 
-[C:/Users/tuanc/OneDrive/Desktop/APDP/Views/Shared/_Layout_User.cshtml]
+[C:/Users/ASUS/Desktop/APDP/Views/Shared/_Layout_User.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-z0dw57zyjh

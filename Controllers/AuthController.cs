@@ -59,32 +59,25 @@ namespace Demo.Controllers
             }
 
             var user = authManager.GetUserByEmailOrPhoneNumber(email, phoneNumber);
-            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Admin")
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
-                HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
-                HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
-                HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
+                HttpContext.Session.SetString("FirstName", user.FirstName ?? string.Empty);
+                HttpContext.Session.SetString("LastName", user.LastName ?? string.Empty);
+                HttpContext.Session.SetString("CodeUser", user.CodeUser ?? string.Empty);
 
-                return RedirectToAction("ListUser");
-            }
-            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Student")
-            {
-                HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
-                HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
-                HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
-                return RedirectToAction("GetUserInfo", "Student");
-            }
-            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password) && user.Role == "Teacher")
-            {
-                HttpContext.Session.SetString(key: "FirstName ", user.FirstName ?? string.Empty);
-                HttpContext.Session.SetString(key: "LastName", user.LastName ?? string.Empty);
-                HttpContext.Session.SetString(key: "CodeUser", user.CodeUser ?? string.Empty);
-                return RedirectToAction("TeacherPage");
+                return user.Role switch
+                {
+                    "Admin" => RedirectToAction("ListUser"),
+                    "Student" => RedirectToAction("GetUserInfo", "Student"),
+                    "Teacher" => RedirectToAction("TeacherPage"),
+                    _ => View()
+                };
             }
 
             ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác.");
             return View();
         }
+
         [HttpPost]
         public IActionResult Register(string FirstName, string LastName, string Address, string Email, string PhoneNumber, string Password, string Role)
         {
@@ -186,7 +179,7 @@ namespace Demo.Controllers
                 return NotFound($"Không tìm thấy người dùng có ID: {IdUser}");
             }
 
-            Console.WriteLine($"🗑 Đang xóa người dùng có ID: {IdUser}");
+            Console.WriteLine($" Đang xóa người dùng có ID: {IdUser}");
             csvService.DeleteUser(IdUser);
 
             return RedirectToAction("ListUser");

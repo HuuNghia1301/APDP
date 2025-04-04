@@ -6,10 +6,11 @@
         public string courseName { get; set; }
         public string Description { get; set; }
         public string StringnameTeacher { get; set; }  
+       
 
-        public string ShowInfor()
+       public string ShowInfor()
         {
-            return "Course";
+            return $"Course: {courseName}, Teacher: {StringnameTeacher}";
         }
     }
 }

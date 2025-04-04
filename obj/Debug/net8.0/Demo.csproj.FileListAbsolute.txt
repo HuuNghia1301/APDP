@@ -1178,3 +1178,4 @@ C:\Users\tuanc\OneDrive\Desktop\APDP\bin\Debug\net8.0\Demo.pdb
 C:\Users\tuanc\OneDrive\Desktop\APDP\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\tuanc\OneDrive\Desktop\APDP\obj\Debug\net8.0\Demo.genruntimeconfig.cache
 C:\Users\tuanc\OneDrive\Desktop\APDP\obj\Debug\net8.0\ref\Demo.dll
+C:\Users\ASUS\Desktop\APDP\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout_User.cshtml.rz.scp.css

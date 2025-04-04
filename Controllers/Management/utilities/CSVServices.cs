@@ -132,10 +132,10 @@ namespace Demo.Controllers.utilities
             File.Delete(_csvFilePath);
             File.Move(tempFile, _csvFilePath);
         }
-        public void UpdateCourse(int id, string courseName, string Description,string selectedTeacherId)
+        public void UpdateCourse(int id, string courseName, string Description, string selectedTeacherId)
         {
             if (!File.Exists(_courseCsvFilePath))
-            {           
+            {
                 return;
             }
             var tempFile = Path.GetTempFileName();
@@ -168,7 +168,8 @@ namespace Demo.Controllers.utilities
             File.Delete(_courseCsvFilePath); // Xóa file cũ
             File.Move(tempFile, _courseCsvFilePath); // Thay thế bằng file mới
 
-        }
+        } 
+
         public void updateGrade(int GradeId , double Score, string CodeUserStudent , string CourseName)
         {
             if (!File.Exists(_gradeCsvFilePath))
@@ -204,6 +205,8 @@ namespace Demo.Controllers.utilities
             File.Move(tempFile, _gradeCsvFilePath); // Thay thế bằng file mới
         }
 
+
+        // Usage in GetCourses method
         public List<Course> GetCourses()
         {
             if (!File.Exists(_courseCsvFilePath)) return new List<Course>();
@@ -211,6 +214,7 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<Course>().ToList();
         }
+        
         public List<Grade> GetGrades()
         {
             if (!File.Exists(_gradeCsvFilePath)) return new List<Grade>();
@@ -365,6 +369,7 @@ namespace Demo.Controllers.utilities
             var users = GetAllUsers(); // Lấy danh sách người dùng từ file CSV
             return users.Where(u => u.Role == "Teacher").ToList(); // Lọc người dùng có Role là "Teacher"
         }
+
         public List<User> GetStudents()
         {
             try
@@ -412,12 +417,5 @@ namespace Demo.Controllers.utilities
                 Console.WriteLine($"Lỗi khi ghi file: {ex.Message}");
             }
         }
-
-
-
-
-
-
-
     }
 }

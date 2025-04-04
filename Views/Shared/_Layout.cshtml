@@ -7,40 +7,50 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/APDP_ASM.styles.css" asp-append-version="true" />
-
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">APDP_ASM</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Admin_Page">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="ListUser">Managetment User</a>
-                        </li>
-                        @* <li class="nav-item"> *@
-                        @*     <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Managetment User</a> *@
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Course</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar">
+            <div class="sidebar-heading text-center font-weight-bold text-primary py-4">APDP_ASM</div>
+            <div class="list-group list-group-flush">
+                <a href="@Url.Action("Index", "Home")" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                <a href="@Url.Action("Admin_Page", "Auth")" class="list-group-item list-group-item-action bg-light">Home</a>
+                <a href="@Url.Action("ListUser", "Auth")" class="list-group-item list-group-item-action bg-light">Manage Users</a>
+                <a href="@Url.Action("Register", "Auth")" class="list-group-item list-group-item-action bg-light">User Registration</a>
+                <a href="@Url.Action("Index", "Course")" class="list-group-item list-group-item-action bg-light">Courses</a>
+                <a href="@Url.Action("Logout", "Auth")" class="list-group-item list-group-item-action bg-light">Logout</a>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow">
+                    <div class="container-fluid">
+                        <button class="btn btn-outline-dark" id="menu-toggle">
+                            <i class="bi bi-list"></i> Menu
+                        </button>
+                        <div class="navbar-collapse collapse d-lg-flex justify-content-end">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#">Hello, User</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="@Url.Action("Logout", "Auth")">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="container-fluid mt-4">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
@@ -48,9 +58,17 @@
             &copy; 2025 - APDP_ASM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        // Toggle the sidebar menu
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
 </html>

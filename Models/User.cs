@@ -3,7 +3,7 @@
     public class User
     {
         public int IdUser { get; set; }
-        public string? CodeUser { get; set; }   
+        public string? CodeUser { get; set; }
         public string? LastName { get; set; }
         public string? FirstName { get; set; }
         public string? Address { get; set; }
@@ -12,6 +12,10 @@
         public string? Password { get; set; }
         public string? Role { get; set; }
         public DateTime? Created { get; set; } = DateTime.Now;
-    }
 
+        public string ShowInfor()
+        {
+            return $"CodeUser : {CodeUser}, User: {LastName} {FirstName}";
+        }
+    }
 }
