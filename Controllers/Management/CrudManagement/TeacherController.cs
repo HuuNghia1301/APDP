@@ -6,59 +6,148 @@ using System.Collections.Generic;
 
 public class TeacherController : Controller
 {
-    private readonly CSVServices csvService;
+    private readonly CSVServices _csvService;
 
     public TeacherController(CSVServices _csvService)
     {
-        this.csvService = _csvService;
+        this._csvService = _csvService;
     }
 
     public IActionResult Index()
     {
-        var grades = csvService.GetGrades();
-        var courses = csvService.GetCourses();
-        var students = csvService.GetStudents();
-        ViewBag.Courses = courses;  // Truyền dữ liệu cho View
-        return View(courses);
+        var grades = _csvService.GetGrades();  // Lấy các khóa học từ courses.csv
+        ViewBag.Grade = grades; // Truyền dữ liệu cho View
+        return View(grades);
     }
-
-    // Giảng viên xem danh sách sinh viên và điểm của họ trong môn học
-    [HttpGet]
-    public IActionResult ViewStudentsInCourse(string teacherCode)
+    public IActionResult ViewCourse()
     {
-        // Lấy thông tin giảng viên từ mã giảng viên
-        var teacher = csvService.GetUserInfoByCode(teacherCode);
-        if (teacher == null || teacher.Role != "Teacher")
+        // Lấy họ tên từ session
+        string? firstName = HttpContext.Session.GetString("FirstName")?.Trim();
+        string? lastName = HttpContext.Session.GetString("LastName")?.Trim();
+
+        // Ghép lại thành tên đầy đủ giáo viên
+        string? teacherName = $"{firstName} {lastName}".Trim();
+
+        // Kiểm tra nếu thiếu thông tin
+        if (string.IsNullOrEmpty(teacherName) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
         {
-            return Unauthorized("Bạn không có quyền truy cập.");
+            TempData["Error"] = "Không tìm thấy tên giáo viên trong phiên.";
+            return RedirectToAction("Index", "Home");
         }
 
-        // Lấy danh sách môn học mà giảng viên này giảng dạy
-        var courses = csvService.GetCourses().Where(c => c.StringnameTeacher == teacherCode).ToList();
+        // Gọi hàm lấy danh sách môn của giáo viên
+        var courses = Course.GetCoursesByTeacher(_csvService, teacherName);
 
-        var studentGrades = new List<Grade>(); // Đúng loại dữ liệu ở đây là Grade
+        // Truyền thông tin sang view
+        ViewBag.TeacherName = teacherName;
 
-        foreach (var course in courses)
-        {
-            // Lấy danh sách điểm của sinh viên trong môn học
-            var grades = csvService.GetGrades().Where(g => g.CourseName == course.courseName).ToList();
-            foreach (var grade in grades)
-            {
-                // Lấy thông tin sinh viên từ mã sinh viên
-                var student = csvService.GetUserInfoByCode(grade.CodeUserStudent);
-                if (student != null)
-                {
-                    var gradeItem = new Grade
-                    {
-                      
-                        Score = grade.Score,
-                        CourseName = grade.CourseName,
-                        CodeUserStudent = grade.CodeUserStudent
-                    };
-                    studentGrades.Add(gradeItem);
-                }
-            }
-        }
-        return View(studentGrades);
+        return View(courses); // Trả về View tên MyCourses.cshtml
     }
+    // Xử lý thêm khóa học (POST)
+    public IActionResult Create()
+    {
+        // Lấy danh sách sinh viên và danh sách môn học
+        var student = _csvService.GetStudents();
+        var courseName = _csvService.GetCoursesName(); // Lấy danh sách tên môn học
+
+        // Đảm bảo rằng courseName không phải null
+        if (courseName == null || !courseName.Any())
+        {
+            ModelState.AddModelError("", "No courses available.");
+        }
+
+        // Truyền danh sách sinh viên và môn học vào ViewData
+        ViewData["Student"] = student;
+        ViewData["CourseName"] = courseName;
+
+        return View();
+    }
+
+    // Xử lý thêm khóa học (POST)
+    [HttpPost]
+    public IActionResult Create(double Score, string CodeUserStudent, string CourseName)
+    {
+        if (double.IsNaN(Score) || string.IsNullOrEmpty(CodeUserStudent) || string.IsNullOrEmpty(CourseName))
+        {
+            return View();
+        }
+
+        // Tạo đối tượng Grade và lưu vào
+        var grade = new Grade
+        {
+            //GradeId = GradeId,
+            Score = Score,
+            CodeUserStudent = CodeUserStudent,
+            CourseName = CourseName
+        };
+
+        _csvService.writeGrade(grade);
+
+        return RedirectToAction("Index");
+    }
+    // Hiển thị trang Edit (GET)
+    [HttpGet]
+    public IActionResult Edit(int gradeId)
+    {
+        var grade = _csvService.GetGrades().FirstOrDefault(g => g.GradeId == gradeId);
+        if (grade == null)
+        {
+            TempData["Error"] = $"Không tìm thấy điểm với ID: {gradeId}";
+            return RedirectToAction("Index");
+        }
+
+        return View(grade); // Trả về thông tin điểm cần sửa
+    }
+    // Xử lý cập nhật điểm (POST)
+    [HttpPost]
+    public IActionResult Edit(int GradeId, double Score, string CodeUserStudent, string CourseName)
+    {
+        if (GradeId == 0)
+        {
+            TempData["Error"] = "ID không hợp lệ.";
+            return RedirectToAction("Index");
+        }
+
+        // Cập nhật điểm trong hệ thống
+        _csvService.updateGrade(GradeId, Score, CodeUserStudent, CourseName);
+
+        TempData["Success"] = "Điểm đã được cập nhật thành công!";
+        return RedirectToAction("Index"); // Quay lại trang danh sách điểm
+    }
+    // Hiển thị trang xác nhận xóa điểm (GET)
+    [HttpGet]
+    public IActionResult Delete(int gradeId)
+    {
+        var grade = _csvService.GetGrades().FirstOrDefault(g => g.GradeId == gradeId);
+        if (grade == null)
+        {
+            TempData["Error"] = $"Không tìm thấy điểm với ID: {gradeId}";
+            return RedirectToAction("Index");
+        }
+
+        return View(grade); // Trả về thông tin điểm cần xóa
+    }
+    // Xử lý xóa điểm (POST)
+    [HttpPost]
+    public IActionResult DeleteConfirmed(int gradeId)
+    {
+        if (gradeId == 0)
+        {
+            TempData["Error"] = "ID không hợp lệ.";
+            return RedirectToAction("Index");
+        }
+
+        // Xóa điểm khỏi hệ thống
+        _csvService.DeleteGrade(gradeId);
+
+        TempData["Success"] = "Điểm đã được xóa thành công!";
+        return RedirectToAction("Index"); // Quay lại trang danh sách điểm
+    }
+
+
+
+
+
+
+
 }

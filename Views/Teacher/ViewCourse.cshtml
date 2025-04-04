@@ -1,0 +1,39 @@
+﻿@model List<Demo.Models.Course>
+
+@{
+    ViewData["Title"] = "Môn học đang giảng dạy";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">📘 Danh sách môn học của giáo viên: @ViewBag.TeacherName</h3>
+        </div>
+        <div class="card-body">
+            @if (Model != null && Model.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var course in Model)
+                    {
+                        <li class="list-group-item">
+                            <h5 class="mb-1">📚 <strong>@course.courseName</strong></h5>
+                            <p class="mb-0">📝 Mô tả: @course.Description</p>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-warning mt-3">
+                    Không có môn học nào được tìm thấy cho giáo viên này.
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="/Teacher/Index" class="btn btn-secondary"> Grade</a>
+       
+    </div>
+</div>

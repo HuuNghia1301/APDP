@@ -51,32 +51,45 @@ namespace Demo.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password, string phoneNumber)
         {
-
+            // Kiểm tra nếu email hoặc password trống
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
                 ModelState.AddModelError("", "Vui lòng nhập đầy đủ Email và Mật khẩu.");
                 return View();
             }
 
+            // Lấy user từ cơ sở dữ liệu bằng email hoặc số điện thoại
             var user = authManager.GetUserByEmailOrPhoneNumber(email, phoneNumber);
+
+            // Kiểm tra nếu tìm thấy user và mật khẩu đúng
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
+                // Lưu thông tin người dùng vào Session
                 HttpContext.Session.SetString("FirstName", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString("LastName", user.LastName ?? string.Empty);
                 HttpContext.Session.SetString("CodeUser", user.CodeUser ?? string.Empty);
 
+                // Kiểm tra lại việc lưu session
+                Console.WriteLine($"Session FirstName: {HttpContext.Session.GetString("FirstName")}");
+                Console.WriteLine($"Session LastName: {HttpContext.Session.GetString("LastName")}");
+                Console.WriteLine($"Session CodeUser: {HttpContext.Session.GetString("CodeUser")}");
+
+               
+                // Điều hướng đến trang phù hợp dựa trên vai trò của người dùng
                 return user.Role switch
                 {
-                    "Admin" => RedirectToAction("ListUser"),
-                    "Student" => RedirectToAction("UserPage"),
-                    "Teacher" => RedirectToAction("TeacherPage"),
-                    _ => View()
+                    "Admin" => RedirectToAction("ListUser"),    // Nếu là Admin
+                    "Student" => RedirectToAction("ViewGrades", "Student"),  // Nếu là Student
+                    "Teacher" => RedirectToAction("ViewCourse", "Teacher"), // Nếu là Teacher
+                    _ => View() // Nếu không phải các vai trò trên, quay lại view hiện tại
                 };
             }
 
+            // Nếu không tìm thấy người dùng hoặc mật khẩu sai
             ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác.");
             return View();
         }
+
 
         [HttpPost]
         public IActionResult Register(string FirstName, string LastName, string Address, string Email, string PhoneNumber, string Password, string Role)

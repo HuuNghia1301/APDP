@@ -217,13 +217,20 @@ namespace Demo.Controllers.utilities
         }
 
         
-        public  List<Grade> GetGrades(string? codeUser = null)
+        public  List<Grade> GetGrades()
         {
             if (!File.Exists(_gradeCsvFilePath)) return new List<Grade>();
             using var reader = new StreamReader(_gradeCsvFilePath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<Grade>().ToList();
         }
+        public List<Grade> GetGradesByGradeName(string gradeName)
+        {
+            var allGrades = GetGrades(); // Lấy tất cả các grade
+            var filteredGrades = allGrades.Where(g => g.CourseName.Equals(gradeName, StringComparison.OrdinalIgnoreCase)).ToList();
+            return filteredGrades;
+        }
+
         public void writeCourse(Course course)
         {
             var existingCourses = GetCourses();
@@ -474,5 +481,6 @@ namespace Demo.Controllers.utilities
                 Console.WriteLine($"Lỗi khi ghi file: {ex.Message}");
             }
         }
+        
     }
 }

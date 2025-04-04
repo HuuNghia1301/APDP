@@ -12,72 +12,49 @@ namespace Demo.Controllers.Management.CrudManagement
         {
             _csvService = csvService;
         }
+
         public IActionResult Index()
         {
-            var courses = _csvService.GetCourses();
-            ViewBag.Courses = courses;  // Truyền dữ liệu cho View
-            return View(courses);
+            return View();
         }
-        public IActionResult GetUserInfo()
+
+        public IActionResult ViewGrades()
         {
-            string codeUser = HttpContext.Session.GetString("CodeUser");
+            
+            // Lấy mã người dùng từ session
+            string? codeUser = HttpContext.Session.GetString("CodeUser");
+            string firstName = HttpContext.Session.GetString("FirstName");
+            string lastName = HttpContext.Session.GetString("LastName");
+
+            Console.WriteLine($"Id User : {codeUser}");
+
+            // Kiểm tra nếu session không có giá trị
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+            {
+                firstName = "Người dùng";
+                lastName = "";
+
+            }
+            // Truyền thông tin vào View
+            ViewBag.FirstName = firstName;
+            ViewBag.LastName = lastName;
+            ViewBag.CodeUser = codeUser;
 
             if (string.IsNullOrEmpty(codeUser))
             {
-                TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng.";
+                TempData["Error"] = "Không tìm thấy mã sinh viên trong phiên.";
                 return RedirectToAction("Index");
             }
 
-            User? user = _csvService.GetUserInfoByCode(codeUser);
+            // Gọi hàm GetStudentGrades trong class Grade
+            var grade = new Grade();
+            string studentGrades = grade.GetStudentGrades(_csvService, codeUser);
 
-            if (user != null)
-            {
-                var studentCourses = _csvService.GetCoursesNameForStudent(user.CodeUser);
-                var studentGrades = _csvService.GetGradesByStudent(user.CodeUser);
-                var teachers = _csvService.GetTeacherOfStudent(user.CodeUser);
+            ViewBag.Grades = studentGrades;
 
-                ViewBag.StudentCourses = studentCourses;
-                ViewBag.StudentGrades = studentGrades;
-                ViewBag.Teachers = teachers;
-
-                return View("UserPage", user);
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Không tìm thấy người dùng với mã này.";
-                return RedirectToAction("Index");
-            }
+            return View(); // ViewGrades.cshtml
         }
-        public IActionResult UserPage()
-        {
-            string codeUser = HttpContext.Session.GetString("CodeUser");
 
-            if (string.IsNullOrEmpty(codeUser))
-            {
-                TempData["ErrorMessage"] = "Không tìm thấy thông tin người dùng.";
-                return RedirectToAction("Index");
-            }
-
-            User? user = _csvService.GetUserInfoByCode(codeUser);
-
-            if (user != null)
-            {
-                var studentCourses = _csvService.GetCoursesNameForStudent(user.CodeUser);
-                var studentGrades = _csvService.GetGradesByStudent(user.CodeUser);
-                var teachers = _csvService.GetTeacherOfStudent(user.CodeUser) ?? new List<User>(); // Đảm bảo không null
-
-                ViewBag.StudentCourses = studentCourses ?? new List<string>(); // Tránh null
-                ViewBag.StudentGrades = studentGrades ?? new List<Grade>(); // Tránh null
-                ViewBag.Teachers = teachers; // Đã được gán giá trị rỗng nếu null
-
-                return View("UserPage", user);
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Không tìm thấy người dùng với mã này.";
-                return RedirectToAction("Index");
-            }
-        }
 
     }
 }

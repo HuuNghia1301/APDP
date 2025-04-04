@@ -1,4 +1,6 @@
-﻿namespace Demo.Models
+﻿using Demo.Controllers.utilities;
+
+namespace Demo.Models
 {
     public class Course : IDisplayinfor
     {
@@ -8,9 +10,23 @@
         public string StringnameTeacher { get; set; }  
        
 
-       public string ShowInfor()
+        public string ShowInfor()
         {
             return $"Course: {courseName}, Teacher: {StringnameTeacher}";
         }
+        public static List<Course> GetCoursesByTeacher(CSVServices csvServices, string teacherName)
+        {
+            var allCourses = csvServices.GetCourses();
+
+            var coursesOfTeacher = allCourses
+                .Where(c =>
+                    !string.IsNullOrEmpty(c.StringnameTeacher) &&
+                    c.StringnameTeacher.Trim().ToLower() == teacherName.Trim().ToLower())
+                .ToList();
+
+            return coursesOfTeacher;
+        }
+
+
     }
 }
