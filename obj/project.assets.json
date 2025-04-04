@@ -5741,23 +5741,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {},
+    "C:\\Users\\tuanc\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\APDP\\Demo.csproj",
+      "projectUniqueName": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP-Nghia\\Demo.csproj",
       "projectName": "Demo",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\APDP\\Demo.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\APDP\\obj\\",
+      "projectPath": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP-Nghia\\Demo.csproj",
+      "packagesPath": "C:\\Users\\tuanc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tuanc\\OneDrive\\Desktop\\APDP-Nghia\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tuanc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5766,7 +5766,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -50,8 +50,7 @@ public class TeacherController : Controller
                 {
                     var gradeItem = new Grade
                     {
-                        FirstName = student.FirstName,
-                        LastName = student.LastName,
+                      
                         Score = grade.Score,
                         CourseName = grade.CourseName,
                         CodeUserStudent = grade.CodeUserStudent

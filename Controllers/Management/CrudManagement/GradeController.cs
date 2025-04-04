@@ -1,155 +1,117 @@
 ﻿using Demo.Controllers.utilities;
 using Demo.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
-public class GradeController : Controller
+namespace Demo.Controllers.Management.CrudManagement
 {
-    private readonly ILogger<GradeController> _logger;
-    private readonly CSVServices _csvServices;
-
-    public GradeController(ILogger<GradeController> logger, CSVServices csvServices)
+    public class GradeController : Controller
     {
-        _logger = logger;
-        _csvServices = csvServices; // Inject CSVServices
-    }
+        private readonly ILogger<GradeController> _logger;
+        private readonly CSVServices _csvServices;
 
-    // Phương thức tạo điểm (GET)
-    [HttpGet]
-    public IActionResult Create()
-    {
-        var students = _csvServices.GetStudents();
-        var courseNames = _csvServices.GetCoursesName();
-        // Đảm bảo rằng courseNames không phải null
-        if (courseNames == null || !courseNames.Any())
+        public GradeController(ILogger<GradeController> logger, CSVServices csvServices)
         {
-            ModelState.AddModelError("", "No courses available.");
+            _logger = logger;
+            _csvServices = csvServices; // Inject CSVServices
         }
-
-        ViewData["Students"] = students;
-        ViewData["CourseNames"] = courseNames;
-
-        return View();
-    }
-
-    // Phương thức tạo điểm (POST)
-    [HttpPost]
-    public IActionResult Create(double Score, string CodeUserStudent, string CourseName)
-    {
-        if (Score <= 0 || string.IsNullOrEmpty(CodeUserStudent) || string.IsNullOrEmpty(CourseName))
+        public IActionResult Index()
         {
-            ModelState.AddModelError("", "Invalid data provided.");
+            var grades = _csvServices.GetGrades();  // Lấy các khóa học từ courses.csv
+            ViewBag.Grade = grades; // Truyền dữ liệu cho View
+            return View(grades);
+        }
+        [HttpGet]
+        // Hiển thị trang Create (GET)
+        public IActionResult Create()
+        {
+            // Lấy danh sách sinh viên và danh sách môn học
+            var student = _csvServices.GetStudents();
+            var courseName = _csvServices.GetCoursesName(); // Lấy danh sách tên môn học
+
+            // Đảm bảo rằng courseName không phải null
+            if (courseName == null || !courseName.Any())
+            {
+                ModelState.AddModelError("", "No courses available.");
+            }
+
+            // Truyền danh sách sinh viên và môn học vào ViewData
+            ViewData["Student"] = student;
+            ViewData["CourseName"] = courseName;
+
             return View();
         }
 
-        var student = _csvServices.GetStudents().FirstOrDefault(s => s.CodeUser == CodeUserStudent);
-        if (student == null)
+        // Xử lý thêm khóa học (POST)
+        [HttpPost]
+        public IActionResult Create(double Score, string CodeUserStudent, string CourseName)
         {
-            ModelState.AddModelError("", "Student not found.");
-            return View();
-        }
+            if (double.IsNaN(Score) || string.IsNullOrEmpty(CodeUserStudent) || string.IsNullOrEmpty(CourseName))
+            {
+                return View();
+            }
 
-        // Kiểm tra quyền của người dùng (chỉ admin hoặc teacher có thể tạo điểm)
-        if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
-        {
+            // Tạo đối tượng Grade và lưu vào
             var grade = new Grade
             {
+                //GradeId = GradeId,
                 Score = Score,
                 CodeUserStudent = CodeUserStudent,
-                CourseName = CourseName,
-                FirstName = User.FindFirst(ClaimTypes.GivenName)?.Value,
-                LastName = User.FindFirst(ClaimTypes.Surname)?.Value
+                CourseName = CourseName
             };
+
             _csvServices.writeGrade(grade);
+
             return RedirectToAction("Index");
         }
-        else
+        // Hiển thị trang xác nhận xóa khóa học
+        [HttpGet]
+        public IActionResult Delete(int gradeId)
         {
-            return Unauthorized("Bạn không có quyền tạo điểm.");
-        }
-    }
+            var course = _csvServices.GetGrades().FirstOrDefault(c => c.GradeId == gradeId);
 
-    // Phương thức sửa điểm (GET)
-    [HttpGet]
-    public IActionResult Edit(int gradeId)
-    {
-        var grade = _csvServices.GetGrades().FirstOrDefault(g => g.GradeId == gradeId);
-        if (grade == null)
-        {
-            return NotFound("Không tìm thấy điểm.");
-        }
+            if (course == null)
+            {
+                return NotFound("Không tìm thấy khóa học có ID: " + gradeId);
+            }
 
-        // Kiểm tra quyền (chỉ admin hoặc teacher có thể sửa điểm)
-        if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
-        {
-            return View(grade);
+            return View(course); // Truyền thông tin khóa học sang View
         }
-        else
+        [HttpPost]
+        public IActionResult DeleteConfirmed(int gradeId)
         {
-            return Unauthorized("Bạn không có quyền sửa điểm.");
-        }
-    }
+            if (gradeId == 0)
+            {
+                Console.WriteLine("⚠ ID không hợp lệ!");
+                return BadRequest("ID không hợp lệ.");
+            }
 
-    // Phương thức sửa điểm (POST)
-    [HttpPost]
-    public IActionResult Edit(int GradeId, double Score, string CodeUserStudent, string CourseName)
-    {
-        if (GradeId == 0)
-        {
-            return BadRequest("ID không hợp lệ.");
-        }
+            Console.WriteLine($"🗑 Đang xóa khóa học có ID: {gradeId}");
+            _csvServices.DeleteGrade(gradeId); // Gọi hàm xóa trong CSVServices
 
-        // Kiểm tra quyền (chỉ admin hoặc teacher có thể sửa điểm)
-        if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Edit(int gradeId)
         {
+            var course = _csvServices.GetGrades().FirstOrDefault(c => c.GradeId == gradeId);
+            if (course == null)
+            {
+                return NotFound($"Không tìm thấy khóa học có ID: {gradeId}");
+            }
+            return View(course); // Trả về View để chỉnh sửa khóa học
+        }
+        [HttpPost]
+        public IActionResult Edit(int GradeId, double Score, string CodeUserStudent, string CourseName)
+        {
+            if (GradeId == 0)
+            {
+                return BadRequest("ID không hợp lệ.");
+            }
             _csvServices.updateGrade(GradeId, Score, CodeUserStudent, CourseName);
             return RedirectToAction("Index");
         }
-        else
-        {
-            return Unauthorized("Bạn không có quyền sửa điểm.");
-        }
-    }
 
-    // Phương thức xóa điểm (GET)
-    [HttpGet]
-    public IActionResult Delete(int gradeId)
-    {
-        var grade = _csvServices.GetGrades().FirstOrDefault(g => g.GradeId == gradeId);
-        if (grade == null)
-        {
-            return NotFound("Không tìm thấy điểm.");
-        }
 
-        // Kiểm tra quyền (chỉ admin hoặc teacher có thể xóa điểm)
-        if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
-        {
-            return View(grade);
-        }
-        else
-        {
-            return Unauthorized("Bạn không có quyền xóa điểm.");
-        }
-    }
 
-    // Phương thức xóa điểm (POST)
-    [HttpPost]
-    public IActionResult DeleteConfirmed(int gradeId)
-    {
-        if (gradeId == 0)
-        {
-            return BadRequest("ID không hợp lệ.");
-        }
-
-        // Kiểm tra quyền (chỉ admin hoặc teacher có thể xóa điểm)
-        if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
-        {
-            _csvServices.DeleteGrade(gradeId); // Gọi hàm xóa trong CSVServices
-            return RedirectToAction("Index");
-        }
-        else
-        {
-            return Unauthorized("Bạn không có quyền xóa điểm.");
-        }
     }
 }

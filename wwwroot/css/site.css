@@ -1,8 +1,5 @@
-/* Importing fonts from Google */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-/* Reseting */
-* {
+/* Reset CSS */
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,88 +10,128 @@ body {
     background: #ecf0f3;
 }
 
+/* ======= Form Wrapper ======= */
 .wrapper {
-    max-width: 350px;
-    min-height: 500px;
-    margin: 80px auto;
-    padding: 40px 30px 30px 30px;
-    background-color: #ecf0f3;
+    max-width: 400px;
+    min-height: 520px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background: #ecf0f3;
     border-radius: 15px;
-    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+    box-shadow: 10px 10px 20px #b6b9bb, -10px -10px 20px #fff;
 }
 
+/* ======= Logo ======= */
 .logo {
-    width: 80px;
+    width: 90px;
     margin: auto;
 }
 
     .logo img {
         width: 100%;
-        height: 80px;
+        height: 90px;
         object-fit: cover;
         border-radius: 50%;
         box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff;
     }
 
-.wrapper .name {
-    font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: 1.3px;
-    padding-left: 10px;
-    color: #555;
-}
-
-.wrapper .form-field input {
-    width: 100%;
-    display: block;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.2rem;
-    color: #666;
-    padding: 10px 15px 10px 10px;
-    /* border: 1px solid red; */
-}
-
+/* ======= Input Fields ======= */
 .wrapper .form-field {
-    padding-left: 10px;
     margin-bottom: 20px;
+    padding-left: 15px;
     border-radius: 20px;
+    background: #ecf0f3;
     box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
 }
 
-    .wrapper .form-field .fas {
+    .wrapper .form-field input {
+        width: 100%;
+        display: block;
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 1rem;
+        padding: 12px 15px;
         color: #555;
     }
 
+#page-content-wrapper {
+    width: 100%
+}
+
+/* ======= Button ======= */
 .wrapper .btn {
-    box-shadow: none;
     width: 100%;
-    height: 40px;
-    background-color: #03A9F4;
-    color: #fff;
+    height: 45px;
+    background: linear-gradient(145deg, #03A9F4, #039BE5);
+    color: white;
+    border: none;
     border-radius: 25px;
-    box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
-    letter-spacing: 1.3px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px #b1b1b1, -4px -4px 8px #fff;
+    transition: all 0.3s ease-in-out;
 }
 
     .wrapper .btn:hover {
-        background-color: #039BE5;
+        background: #0288D1;
     }
 
-.wrapper a {
-    text-decoration: none;
-    font-size: 0.8rem;
-    color: #03A9F4;
+/* ======= Sidebar ======= */
+#sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #f8f9fa;
+    padding: 20px;
+    box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-    .wrapper a:hover {
-        color: #039BE5;
+.sidebar-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.list-group-item {
+    padding: 12px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+    .list-group-item:hover {
+        background: #007bff;
+        color: white;
     }
 
-@media(max-width: 380px) {
+/* ======= Navbar ======= */
+.navbar {
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #007bff;
+    }
+
+/* ======= Responsive Design ======= */
+@media (max-width: 768px) {
     .wrapper {
-        margin: 30px 20px;
-        padding: 40px 15px 15px 15px;
+        max-width: 320px;
+        padding: 30px 20px;
+    }
+
+    #sidebar {
+        width: 200px;
+    }
+
+    .list-group-item {
+        font-size: 0.9rem;
     }
 }

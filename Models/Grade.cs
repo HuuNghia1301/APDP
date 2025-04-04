@@ -6,12 +6,10 @@
         public double? Score { get; set; }
         public string? CodeUserStudent { get; set; }
         public string? CourseName { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
 
         public string ShowInfor()
         {
-            return $"Grade for {CodeUserStudent} in {CourseName}: {Score} ";
+            return "Grade";
         }
     }
 }

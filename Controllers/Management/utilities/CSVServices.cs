@@ -440,11 +440,7 @@ namespace Demo.Controllers.utilities
             var existingGrades = GetGrades();
             var student = GetAllUsers().FirstOrDefault(u => u.CodeUser == grade.CodeUserStudent);
 
-            if (student != null)
-            {
-                grade.FirstName = student.FirstName;
-                grade.LastName = student.LastName;
-            }
+           
 
             grade.GradeId = existingGrades.Count > 0 ? existingGrades.Max(c => c.GradeId) + 1 : 1;
             existingGrades.Add(grade);
