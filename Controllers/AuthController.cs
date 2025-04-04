@@ -68,7 +68,7 @@ namespace Demo.Controllers
                 return user.Role switch
                 {
                     "Admin" => RedirectToAction("ListUser"),
-                    "Student" => RedirectToAction("GetUserInfo", "Student"),
+                    "Student" => RedirectToAction("UserPage"),
                     "Teacher" => RedirectToAction("TeacherPage"),
                     _ => View()
                 };

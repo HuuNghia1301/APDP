@@ -13,6 +13,15 @@ public class TeacherController : Controller
         this.csvService = _csvService;
     }
 
+    public IActionResult Index()
+    {
+        var grades = csvService.GetGrades();
+        var courses = csvService.GetCourses();
+        var students = csvService.GetStudents();
+        ViewBag.Courses = courses;  // Truyền dữ liệu cho View
+        return View(courses);
+    }
+
     // Giảng viên xem danh sách sinh viên và điểm của họ trong môn học
     [HttpGet]
     public IActionResult ViewStudentsInCourse(string teacherCode)
@@ -39,10 +48,10 @@ public class TeacherController : Controller
                 var student = csvService.GetUserInfoByCode(grade.CodeUserStudent);
                 if (student != null)
                 {
-                    
                     var gradeItem = new Grade
                     {
-                        User = student, 
+                        FirstName = student.FirstName,
+                        LastName = student.LastName,
                         Score = grade.Score,
                         CourseName = grade.CourseName,
                         CodeUserStudent = grade.CodeUserStudent
@@ -51,7 +60,6 @@ public class TeacherController : Controller
                 }
             }
         }
-
         return View(studentGrades);
     }
 }

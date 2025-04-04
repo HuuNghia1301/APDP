@@ -41,6 +41,7 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<User>().ToList();
         }
+
         public void WriteUsers(User user)
         {
             var users = GetAllUsers();
@@ -214,8 +215,9 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             return csv.GetRecords<Course>().ToList();
         }
+
         
-        public List<Grade> GetGrades()
+        public  List<Grade> GetGrades(string? codeUser = null)
         {
             if (!File.Exists(_gradeCsvFilePath)) return new List<Grade>();
             using var reader = new StreamReader(_gradeCsvFilePath);
@@ -237,7 +239,7 @@ namespace Demo.Controllers.utilities
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
             csv.WriteRecords(existingCourses);
         }
-        public void writeGrade(Grade grade)
+        public void WriteGrade(Grade grade)
         {
             var existingGrades = GetGrades();
             // Tự động tăng gradeId
@@ -317,7 +319,7 @@ namespace Demo.Controllers.utilities
         {
             if (IdUser <= 0)
             {
-                Console.WriteLine("⚠ ID không hợp lệ!");
+                Console.WriteLine(" ID không hợp lệ!");
                 return;
             }
 
@@ -339,11 +341,11 @@ namespace Demo.Controllers.utilities
                 using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
                 csv.WriteRecords(existingUsers);
                 writer.Flush(); // Đảm bảo dữ liệu được ghi ngay
-                Console.WriteLine($"✅ Đã xóa người dùng có ID: {IdUser}");
+                Console.WriteLine($" Đã xóa người dùng có ID: {IdUser}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Lỗi khi ghi file: {ex.Message}");
+                Console.WriteLine($" Lỗi khi ghi file: {ex.Message}");
             }
         }
 
@@ -370,6 +372,28 @@ namespace Demo.Controllers.utilities
             return users.Where(u => u.Role == "Teacher").ToList(); // Lọc người dùng có Role là "Teacher"
         }
 
+        public List<User> GetTeacherOfStudent(string codeUser)
+        {
+            var users = GetAllUsers() ?? new List<User>();
+            var courses = GetCourses() ?? new List<Course>();
+            var studentCourses = GetCoursesNameForStudent(codeUser) ?? new List<string>(); 
+
+            if (!studentCourses.Any())
+            {
+                return new List<User>(); // Trả về danh sách rỗng nếu không có khóa học
+            }
+
+            // Lấy danh sách tên giáo viên từ khóa học
+            var teacherNames = studentCourses.Select(c => c).Distinct().ToList();
+
+            // Lọc danh sách giáo viên theo tên
+            return users.Where(u => u.Role == "Teacher" && teacherNames.Contains(u.FirstName + " " + u.LastName)).ToList();
+        }
+
+
+
+
+
         public List<User> GetStudents()
         {
             try
@@ -385,6 +409,12 @@ namespace Demo.Controllers.utilities
             }
         }
 
+        public List<Grade> GetGradesByStudent(string codeUser)
+        {
+            var grades = GetGrades(); // Lấy danh sách điểm từ file CSV
+            return grades.Where(g => g.CodeUserStudent == codeUser).ToList(); // Lọc điểm theo mã sinh viên
+        }
+
         public List<string> GetCoursesName()
         {
             var courses = GetCourses();
@@ -394,6 +424,37 @@ namespace Demo.Controllers.utilities
             }
             return courses.Select(u => u.courseName).ToList(); // Trả về danh sách tên môn học
         }
+
+        public List<string> GetCoursesNameForStudent(string codeUser)
+        {
+            var courses = GetCourses();
+            if (courses == null || !courses.Any())
+            {
+                return new List<string>(); 
+            }
+            return courses.Where(c => c.StringnameTeacher == codeUser).Select(u => u.courseName).ToList(); 
+        }
+
+        public void writeGrade(Grade grade)
+        {
+            var existingGrades = GetGrades();
+            var student = GetAllUsers().FirstOrDefault(u => u.CodeUser == grade.CodeUserStudent);
+
+            if (student != null)
+            {
+                grade.FirstName = student.FirstName;
+                grade.LastName = student.LastName;
+            }
+
+            grade.GradeId = existingGrades.Count > 0 ? existingGrades.Max(c => c.GradeId) + 1 : 1;
+            existingGrades.Add(grade);
+
+            using var writer = new StreamWriter(_gradeCsvFilePath);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(existingGrades);
+        }
+
+
         public void DeleteGrade(int gradeId)
         {
             var existingCourses = GetGrades();

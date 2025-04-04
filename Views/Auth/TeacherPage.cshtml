@@ -1,14 +1,95 @@
 ﻿@model Demo.Models.User
 
 @{
-    ViewData["Title"] = "TeacherPage";
+    ViewData["Title"] = "Teacher Page";
     Layout = null;
+    var studentGrades = ViewBag.StudentGrades as List<Demo.Models.Grade>;
+    var students = ViewBag.Students as List<Demo.Models.User>;
+
 }
 
+<h2>Xin chào, @Model.FirstName @Model.LastName</h2>
+<h3>Quản lý điểm số sinh viên</h3>
 
-<h1>Welcom  @Context.Session.GetString("FirstName")  @Context.Session.GetString("LastName") @Context.Session.GetString("CodeUser")</h1>
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+<hr />
+
+<!-- Danh sách sinh viên -->
+<h3>Danh sách sinh viên của bạn</h3>
+@if (students != null && students.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã Sinh Viên</th>
+                <th>Họ Tên</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.CodeUser</td>
+                    <td>@student.FirstName @student.LastName</td>
+                    <td>@student.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
+else
+{
+    <p>Bạn chưa có sinh viên nào.</p>
+}
+
+<!-- Danh sách điểm số -->
+<h3>Quản lý điểm số</h3>
+@if (studentGrades != null && studentGrades.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã Sinh Viên</th>
+                <th>Môn Học</th>
+                <th>Điểm</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var grade in studentGrades)
+            {
+                <tr>
+                    <td>@grade.CodeUserStudent</td>
+                    <td>@grade.CourseName</td>
+                    <td>@grade.Score</td>
+                    <td>
+                        <a asp-action="EditGrade" asp-route-id="@grade.GradeId" class="btn btn-warning">Sửa</a>
+                        <a asp-action="DeleteGrade" asp-route-id="@grade.GradeId" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Chưa có điểm nào.</p>
+}
+
+<!-- Thêm điểm số -->
+<h3>Thêm điểm mới</h3>
+<form asp-action="AddGrade" method="post">
+    <div class="form-group">
+        <label for="CodeUser">Mã Sinh Viên</label>
+        <input type="text" name="CodeUser" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="CourseName">Tên Môn Học</label>
+        <input type="text" name="CourseName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Score">Điểm</label>
+        <input type="number" name="Score" class="form-control" step="0.1" min="0" max="10" required />
+    </div>
+    <button type="submit" class="btn btn-success">Thêm điểm</button>
+</form>

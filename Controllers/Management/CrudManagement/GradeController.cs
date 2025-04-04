@@ -1,6 +1,7 @@
 ﻿using Demo.Controllers.utilities;
 using Demo.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 public class GradeController : Controller
 {
@@ -56,7 +57,8 @@ public class GradeController : Controller
                 Score = Score,
                 CodeUserStudent = CodeUserStudent,
                 CourseName = CourseName,
-                User = student // Đưa thông tin sinh viên vào đối tượng Grade
+                FirstName = User.FindFirst(ClaimTypes.GivenName)?.Value,
+                LastName = User.FindFirst(ClaimTypes.Surname)?.Value
             };
             _csvServices.writeGrade(grade);
             return RedirectToAction("Index");

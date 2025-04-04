@@ -4,8 +4,7 @@
     ViewData["Title"] = "ListUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>ListUser</h1>
+<h1>Welcom  @Context.Session.GetString("FirstName") + @Context.Session.GetString("LastName") @Context.Session.GetString("CodeUser")</h1>
 
 <p>
     <a asp-action="Register">Create New</a>
