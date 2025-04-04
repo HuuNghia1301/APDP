@@ -10,3 +10,4 @@ IdUser,CodeUser,LastName,FirstName,Address,Email,PhoneNumber,Password,Role,Creat
 15,BH9059,Nguyen,Nghia,HN,admin0@gmail.com,0321456789,$2a$11$gWfd2qbh2gWA.MdOXRpqW.tkf0rkFAO1cGAzvsiO6XX4EsPxOxoJS,Admin,04/04/2025 09:03:25
 16,BH6936,N,N,YB,admin12@gmail.com,03253444,$2a$11$eWB/3EbhgFNO.HT5YV1TgO6Sp8jF.cGUR4FHPhUthIzxDINpweebi,Student,04/04/2025 09:03:56
 17,BH8687,Tuan,Ton,HN,ton11@gmail.com,0314573787,$2a$11$lt1KWwtqawZjWSyOxMubouoK2BugaTHF99l1QdaSD67foYfnzN9DO,Teacher,04/04/2025 09:04:52
+18,BH8800,N,N,YB,aaaa@gmail.com,03214576,$2a$11$Yyq1Vm2nkgdEOGl9fKCfqOhqfBelnDm.phNlz4.szKhvxucN/2RqC,Student,04/04/2025 15:54:52
