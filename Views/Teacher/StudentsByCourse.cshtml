@@ -1,0 +1,88 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Sinh viên của môn học";
+    Layout = "~/Views/Shared/_Layout_Teacher.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h3>📖 Sinh viên học môn: @ViewBag.CourseName</h3>
+        </div>
+        <div class="card-body">
+            @if (Model != null && Model.Any())
+            {
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Mã sinh viên</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Điểm</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            var formId = $"form_{item.Student.CodeUser}";
+                            <tr>
+                                <td>@item.Student.CodeUser</td>
+                                <td>@(item.Student.LastName + " " + item.Student.FirstName)</td>
+                                <td>@item.Student.Email</td>
+                                <td>@(item.Score != null ? item.Score.ToString() : "Chưa có")</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-@(item.Score != null ? "warning" : "primary")"
+                                            onclick="toggleForm('@formId')">
+                                        @(item.Score != null ? "Sửa điểm" : "Nhập điểm")
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr id="@formId" style="display:none;">
+                                <td colspan="5">
+                                    <form method="post" asp-controller="Teacher" asp-action="EditGradeforTeacher">
+                                        <input type="hidden" name="GradeId" value="@item.GradeId" />
+                                        <input type="hidden" name="CodeUserStudent" value="@item.Student.CodeUser" />
+                                        <input type="hidden" name="CourseName" value="@ViewBag.CourseName" />
+                                        <div class="form-inline">
+                                            <input type="number" class="form-control mr-2" name="Score"
+                                                   value="@(item.Score ?? "")"
+                                                   step="0.01" placeholder="Nhập điểm" required />
+                                            <button type="submit" class="btn btn-success">Lưu</button>
+                                        </div>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    Không tìm thấy sinh viên nào cho môn học này.
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleForm(id) {
+            var formRow = document.getElementById(id);
+            // Ẩn tất cả form khác trước
+            document.querySelectorAll('tr[id^="form_"]').forEach(row => {
+                if (row.id !== id) row.style.display = 'none';
+            });
+
+            // Toggle form được nhấn
+            if (formRow.style.display === 'none') {
+                formRow.style.display = '';
+            } else {
+                formRow.style.display = 'none';
+            }
+        }
+    </script>
+}

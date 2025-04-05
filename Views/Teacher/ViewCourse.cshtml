@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Môn học đang giảng dạy";
-    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    Layout = "~/Views/Shared/_Layout_Teacher.cshtml";
 }
 
 <div class="container mt-5">
@@ -16,9 +16,11 @@
                 <ul class="list-group">
                     @foreach (var course in Model)
                     {
-                        <li class="list-group-item">
-                            <h5 class="mb-1">📚 <strong>@course.courseName</strong></h5>
-                            <p class="mb-0">📝 Mô tả: @course.Description</p>
+                        <li class="list-group-item p-0">
+                            <a href="/Teacher/StudentsByCourse?courseName=@course.courseName" class="d-block px-3 py-2 text-dark text-decoration-none">
+                                <h5 class="mb-1">📚 <strong>@course.courseName</strong></h5>
+                                <p class="mb-0">📝 Mô tả: @course.Description</p>
+                            </a>
                         </li>
                     }
                 </ul>
@@ -31,9 +33,8 @@
             }
         </div>
     </div>
-
     <div class="mt-4">
-        <a href="/Teacher/Index" class="btn btn-secondary"> Grade</a>
-       
+        <a href="/Auth/Login" class="btn btn-secondary">🔙 Quay lại</a>
+        <a href="/Teacher/ChangePasswordForTeacher" class="btn btn-secondary">Đỏi Mật Khẩu</a>
     </div>
 </div>

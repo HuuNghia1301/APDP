@@ -54,7 +54,24 @@ namespace Demo.Controllers.Management.CrudManagement
 
             return View(); // ViewGrades.cshtml
         }
+        [HttpPost]
+        public IActionResult ChangePassword(string email, string newPassword)
+        {
+            var user = _csvService.GetUserByEmailOrPhoneNumber(email, null);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Người dùng không tồn tại.");
+                return View();
+            }
 
+            _csvService.UpdateUserPassword(email, newPassword);
+            ViewBag.Message = "Đổi mật khẩu thành công.";
+            return View();
+        }
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
 
     }
 }

@@ -481,6 +481,18 @@ namespace Demo.Controllers.utilities
                 Console.WriteLine($"Lỗi khi ghi file: {ex.Message}");
             }
         }
-        
+        public void updateGrade(double score, string codeUserStudent, string courseName)
+        {
+            var grades = GetGrades();
+            var grade = grades.FirstOrDefault(g => g.CodeUserStudent == codeUserStudent && g.CourseName == courseName);
+            if (grade != null)
+            {
+                grade.Score = score;
+                // Sau đó ghi lại file CSV nếu cần
+                WriteGrade(grade);
+            }
+        }
+
+
     }
 }

@@ -143,11 +143,70 @@ public class TeacherController : Controller
         TempData["Success"] = "Điểm đã được xóa thành công!";
         return RedirectToAction("Index"); // Quay lại trang danh sách điểm
     }
+    public IActionResult StudentsByCourse(string courseName)
+    {
+        if (string.IsNullOrEmpty(courseName))
+        {
+            TempData["Error"] = "Không xác định được môn học.";
+            return RedirectToAction("ViewCourse");
+        }
+
+        // Lấy toàn bộ điểm
+        var grades = _csvService.GetGrades();
+
+        // Lọc danh sách điểm theo tên môn học
+        var filteredGrades = grades.Where(g => g.CourseName == courseName).ToList();
+
+        // Lấy thông tin sinh viên
+        var students = _csvService.GetStudents();
+
+        // Gộp thông tin sinh viên + điểm
+        var studentWithGrades = from g in filteredGrades
+                                join s in students on g.CodeUserStudent equals s.CodeUser
+                                select new
+                                {
+                                    Student = s,
+                                    g.Score,
+                                    g.GradeId 
+                                };
 
 
+        ViewBag.CourseName = courseName;
+        return View(studentWithGrades);
+    }
 
+    [HttpPost]
+    public IActionResult EditGradeforTeacher(int GradeId, double Score, string CodeUserStudent, string CourseName)
+    {
+        Console.WriteLine($"📥 GradeId: {GradeId}, Score: {Score}, User: {CodeUserStudent}, Course: {CourseName}");
 
+        if (string.IsNullOrEmpty(CodeUserStudent))
+        {
+            return BadRequest("Không tìm thấy người dùng");
+        }
 
+        _csvService.updateGrade(GradeId, Score, CodeUserStudent, CourseName);
 
+        return RedirectToAction("StudentsByCourse", "Teacher"); 
+    }
+    [HttpPost]
+    public IActionResult ChangePasswordForTeacher(string email, string newPassword)
+    {
+        var user = _csvService.GetUserByEmailOrPhoneNumber(email, null);
+        if (user == null)
+        {
+            ModelState.AddModelError("", "Người dùng không tồn tại.");
+            return View();
+        }
+
+        _csvService.UpdateUserPassword(email, newPassword);
+        ViewBag.Message = "Đổi mật khẩu thành công.";
+        return View();
+    }
+    [HttpGet]
+    public IActionResult ChangePasswordForTeacher()
+    {
+        return View();
+    }
 
 }
