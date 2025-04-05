@@ -12,12 +12,12 @@ namespace Demo.Controllers.Management.CrudManagement
         public GradeController(ILogger<GradeController> logger, CSVServices csvServices)
         {
             _logger = logger;
-            _csvServices = csvServices; // Inject CSVServices
+            _csvServices = csvServices; 
         }
         public IActionResult Index()
         {
-            var grades = _csvServices.GetGrades();  // Lấy các khóa học từ courses.csv
-            ViewBag.Grade = grades; // Truyền dữ liệu cho View
+            var grades = _csvServices.GetGrades();  
+            ViewBag.Grade = grades; 
             return View(grades);
         }
         [HttpGet]

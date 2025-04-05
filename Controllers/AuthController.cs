@@ -29,7 +29,7 @@ namespace Demo.Controllers
             this.authManager = _authManager;
             this.updateUser = _updateUser;
             this.csvService = _csvService;
-            
+            // Dependency injection: thong qua controller giam phu thuoc
         }
 
         [HttpGet]
@@ -78,11 +78,12 @@ namespace Demo.Controllers
                 // Điều hướng đến trang phù hợp dựa trên vai trò của người dùng
                 return user.Role switch
                 {
-                    "Admin" => RedirectToAction("ListUser"),    // Nếu là Admin
-                    "Student" => RedirectToAction("ViewGrades", "Student"),  // Nếu là Student
-                    "Teacher" => RedirectToAction("ViewCourse", "Teacher"), // Nếu là Teacher
+                    "Admin" => RedirectToAction("ListUser"),    
+                    "Student" => RedirectToAction("ViewGrades", "Student"), 
+                    "Teacher" => RedirectToAction("ViewCourse", "Teacher"),
                     _ => View() // Nếu không phải các vai trò trên, quay lại view hiện tại
                 };
+                // Strategy Pattern duoc ap dung de quyet dinh chuyen huong theo role
             }
 
             // Nếu không tìm thấy người dùng hoặc mật khẩu sai
