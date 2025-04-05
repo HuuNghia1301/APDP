@@ -81,11 +81,11 @@ namespace Demo.Controllers.Management.CrudManagement
         {
             if (gradeId == 0)
             {
-                Console.WriteLine("⚠ ID không hợp lệ!");
+                Console.WriteLine(" ID không hợp lệ!");
                 return BadRequest("ID không hợp lệ.");
             }
 
-            Console.WriteLine($"🗑 Đang xóa khóa học có ID: {gradeId}");
+            Console.WriteLine($" Đang xóa khóa học có ID: {gradeId}");
             _csvServices.DeleteGrade(gradeId); // Gọi hàm xóa trong CSVServices
 
             return RedirectToAction("Index");

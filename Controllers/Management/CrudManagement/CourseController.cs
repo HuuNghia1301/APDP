@@ -2,6 +2,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Demo.Models;
     using Demo.Controllers.utilities;
+using Demo.Controllers.Management.Authentication;
 
     namespace Demo.Controllers.Management.CrudManagement
     {
@@ -10,15 +11,27 @@
             private readonly ILogger<CourseController> _logger;
             private readonly CSVServices _csvServices;
 
-            public CourseController(ILogger<CourseController> logger, CSVServices csvServices)
+            private CourseController(ILogger<CourseController> logger, CSVServices csvServices)
             {
                 _logger = logger;
                 _csvServices = csvServices; // Khởi tạo đối tượng CSVServices
-            }
+               // Dependency injection
+        }
+        public CourseController()
+        {
+            string userCsvPath = "Data/users.csv";
+            string courseCsvPath = "Data/courses.csv";
+            string gradeCsvPath = "Data/grades.csv";
 
-            public IActionResult Index()
+            // Khởi tạo Singleton
+            _csvServices = CSVServices.GetInstance(userCsvPath, courseCsvPath, gradeCsvPath);
+
+            
+        }
+
+        public IActionResult Index()
             {
-                var courses = _csvServices.GetCourses();  // Lấy các khóa học từ courses.csv
+                var courses = _csvServices.GetCourses(); 
                 ViewBag.Courses = courses;  // Truyền dữ liệu cho View
                 return View(courses);
             }
@@ -28,7 +41,7 @@
             public IActionResult Create()
             {
                 // Lấy danh sách giáo viên từ dịch vụ
-                var teachers = _csvServices.GetTeachers(); //  GetTeachers() là phương thức lấy danh sách giảng viên
+                var teachers = _csvServices.GetTeachers(); 
                 // Truyền danh sách giáo viên vào ViewData
                 ViewData["Teachers"] = teachers;
 

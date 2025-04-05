@@ -15,7 +15,7 @@
 <body class="d-flex justify-content-center align-items-center vh-100" style="background-color: #f8f9fa;">
     <div class="card shadow p-4" style="width: 350px;">
         <div class="text-center">
-            <h2 class="mb-4">Đăng nhập</h2>
+            <h2 class="mb-4">Login</h2>
         </div>
 
         <form asp-action="Login" method="post">
@@ -26,12 +26,12 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Mật khẩu:</label>
+                <label class="form-label">PassWord:</label>
                 <input asp-for="Password" type="password" class="form-control" required />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
 
             @if (!ViewData.ModelState.IsValid)
             {

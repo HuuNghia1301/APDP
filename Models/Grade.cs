@@ -25,7 +25,7 @@ namespace Demo.Models
                 foreach (var grade in studentGrades)
                 {
                     var course = CsvServices.GetCourses().FirstOrDefault(c => c.courseName == grade.CourseName)?.courseName ?? "không có tên";
-                    result.AppendLine($"Môn học: {course} - Điểm: {grade.Score}");
+                    result.AppendLine($"Course: {course} - Grade: {grade.Score} ");
                 }
                 return result.ToString();
             }

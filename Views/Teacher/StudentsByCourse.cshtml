@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<dynamic>
 @{
-    ViewData["Title"] = "Sinh viên của môn học";
+    ViewData["Title"] = "Students in Course";
     Layout = "~/Views/Shared/_Layout_Teacher.cshtml";
 }
 
 <div class="container mt-5">
     <div class="card">
         <div class="card-header bg-success text-white">
-            <h3>📖 Sinh viên học môn: @ViewBag.CourseName</h3>
+            <h3>📖 Students enrolled in: @ViewBag.CourseName</h3>
         </div>
         <div class="card-body">
             @if (Model != null && Model.Any())
@@ -15,11 +15,11 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Mã sinh viên</th>
-                            <th>Họ tên</th>
+                            <th>Student ID</th>
+                            <th>Full Name</th>
                             <th>Email</th>
-                            <th>Điểm</th>
-                            <th>Hành động</th>
+                            <th>Grade</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,11 +30,11 @@
                                 <td>@item.Student.CodeUser</td>
                                 <td>@(item.Student.LastName + " " + item.Student.FirstName)</td>
                                 <td>@item.Student.Email</td>
-                                <td>@(item.Score != null ? item.Score.ToString() : "Chưa có")</td>
+                                <td>@(item.Score != null ? item.Score.ToString() : "Not available")</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-@(item.Score != null ? "warning" : "primary")"
                                             onclick="toggleForm('@formId')">
-                                        @(item.Score != null ? "Sửa điểm" : "Nhập điểm")
+                                        @(item.Score != null ? "Edit Grade" : "Enter Grade")
                                     </button>
                                 </td>
                             </tr>
@@ -47,11 +47,10 @@
                                         <div class="form-inline">
                                             <input type="number" class="form-control mr-2" name="Score"
                                                    value="@(item.Score ?? "")"
-                                                   step="0.01" placeholder="Nhập điểm" required />
-                                            <button type="submit" class="btn btn-success">Lưu</button>
+                                                   step="0.01" placeholder="Enter grade" required />
+                                            <button type="submit" class="btn btn-success">Save</button>
                                         </div>
                                     </form>
-
                                 </td>
                             </tr>
                         }
@@ -61,7 +60,7 @@
             else
             {
                 <div class="alert alert-warning">
-                    Không tìm thấy sinh viên nào cho môn học này.
+                    No students found for this course.
                 </div>
             }
         </div>
@@ -72,12 +71,12 @@
     <script>
         function toggleForm(id) {
             var formRow = document.getElementById(id);
-            // Ẩn tất cả form khác trước
+            // Hide all other forms first
             document.querySelectorAll('tr[id^="form_"]').forEach(row => {
                 if (row.id !== id) row.style.display = 'none';
             });
 
-            // Toggle form được nhấn
+            // Toggle the selected form
             if (formRow.style.display === 'none') {
                 formRow.style.display = '';
             } else {

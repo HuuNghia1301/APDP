@@ -1,22 +1,22 @@
 ﻿@{
-    ViewBag.Title = "Điểm của sinh viên";
+    ViewBag.Title = "Student's Grades";
     Layout = "~/Views/Shared/_Layout_User.cshtml";
 }
 
 <div class="container mt-5">
     <div class="card shadow-sm border-0">
         <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">Thông tin sinh viên</h3>
+            <h3 class="mb-0">Student Information</h3>
         </div>
         <div class="card-body">
-            <h4 class="card-title">👨‍🎓 Họ và tên: <strong>@ViewBag.FirstName @ViewBag.LastName</strong></h4>
-            <h4 class="card-title">ID  <strong>@ViewBag.CodeUser</strong></h4>
+            <h4 class="card-title">👨‍🎓 Full Name: <strong>@ViewBag.FirstName @ViewBag.LastName</strong></h4>
+            <h4 class="card-title">ID: <strong>@ViewBag.CodeUser</strong></h4>
         </div>
     </div>
 
     <div class="card mt-4 shadow-sm border-0">
         <div class="card-header bg-success text-white">
-            <h4 class="mb-0">📊 Bảng điểm</h4>
+            <h4 class="mb-0">📊 Grade Report</h4>
         </div>
         <div class="card-body">
             @if (!string.IsNullOrEmpty(ViewBag.Grades as string))
@@ -24,18 +24,19 @@
                 <div class="alert alert-info">
                     @Html.Raw(ViewBag.Grades) 
                 </div>
+               
             }
             else
             {
                 <div class="alert alert-warning">
-                    Không có điểm nào được tìm thấy.
+                    No grades found.
                 </div>
             }
         </div>
     </div>
 
     <div class="mt-4">
-        <a href="/Auth/Login" class="btn btn-secondary">🔙 Quay lại</a>
-        <a href="/Student/ChangePassword" class="btn btn-secondary">Đỏi Mật Khẩu</a>
+        <a href="/Auth/Login" class="btn btn-secondary">🔙 Back</a>
+        <a href="/Student/ChangePassword" class="btn btn-secondary">Change Password</a>
     </div>
 </div>

@@ -13,6 +13,8 @@
         public string? Role { get; set; }
         public DateTime? Created { get; set; } = DateTime.Now;
 
+       
+
         public string ShowInfor()
         {
             return $"CodeUser : {CodeUser}, User: {LastName} {FirstName}";

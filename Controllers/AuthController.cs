@@ -19,17 +19,31 @@ namespace Demo.Controllers
 {
     public class AuthController : Controller
     {
-        
+
+
         private readonly CSVServices csvService;
         private readonly AuthManagement authManager;
-        private readonly Management.CrudManagement.UpdateUser updateUser;
+        private readonly UpdateUser updateUser;
 
-        public AuthController(AuthManagement _authManager, UpdateUser _updateUser , CSVServices _csvService)
+        private AuthController(AuthManagement _authManager, UpdateUser _updateUser, CSVServices _csvService)
         {
             this.authManager = _authManager;
             this.updateUser = _updateUser;
             this.csvService = _csvService;
             // Dependency injection: thong qua controller giam phu thuoc
+        }
+        public AuthController()
+        {
+            string userCsvPath = "Data/users.csv";
+            string courseCsvPath = "Data/courses.csv";
+            string gradeCsvPath = "Data/grades.csv";
+
+            // Khởi tạo Singleton
+            csvService = CSVServices.GetInstance(userCsvPath, courseCsvPath, gradeCsvPath);
+
+            // Khởi tạo các thành phần khác (giả định bạn cần chỉnh sửa lại để không dùng DI ở đây)
+            authManager = new AuthManagement(csvService);
+            updateUser = new UpdateUser(csvService);
         }
 
         [HttpGet]
@@ -113,7 +127,7 @@ namespace Demo.Controllers
                 };
                 ViewBag.Message = "Đăng ký thành công";
                 authManager.WriteUsers(users);
-                return RedirectToAction("ListUser");
+                return RedirectToAction("Register");
             }
             ModelState.AddModelError("", "Email hoặc số điện thoại đã tồn tại.");
             return View();

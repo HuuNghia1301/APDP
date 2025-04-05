@@ -15,15 +15,38 @@ namespace Demo.Controllers.utilities
 {
     public class CSVServices : DatabaseService, IReadWriteUser
     {
+        private static CSVServices _instance;
         private readonly string _csvFilePath;
         private readonly string _courseCsvFilePath;
         private readonly string _gradeCsvFilePath;
-        public CSVServices(string csvFilePath, string courseCsvFilePath, string gradeCsvFilePath) : base(csvFilePath)
+        private CSVServices(string csvFilePath, string courseCsvFilePath, string gradeCsvFilePath) : base(csvFilePath)
         {
             _csvFilePath = csvFilePath;
             _courseCsvFilePath = courseCsvFilePath;
             _gradeCsvFilePath = gradeCsvFilePath;
         }
+
+        public static CSVServices GetInstance(string csvFilePath, string courseCsvFilePath, string gradeCsvFilePath)
+        {
+            if (_instance == null)
+            {
+                _instance = new CSVServices(csvFilePath, courseCsvFilePath, gradeCsvFilePath);
+            }
+            return _instance;
+        }
+        public string GetCSVFilePath()
+        {
+            return _csvFilePath;
+        }
+        public string GetCourseCSVFilePath()
+        {
+            return _courseCsvFilePath;
+        }
+        public string GetGradeCSVFilePath()
+        {
+            return _gradeCsvFilePath;
+        }
+
 
         public List<User> GetAllUsers()
         {
@@ -202,8 +225,8 @@ namespace Demo.Controllers.utilities
                 }
                 writer.Flush();
             }
-            File.Delete(_gradeCsvFilePath); // Xóa file cũ
-            File.Move(tempFile, _gradeCsvFilePath); // Thay thế bằng file mới
+            File.Delete(_gradeCsvFilePath); //
+            File.Move(tempFile, _gradeCsvFilePath); 
         }
 
 

@@ -20,12 +20,9 @@ builder.Services.AddSession(options =>
 });
 
 // Đăng ký CSVServices với Dependency Injection
-builder.Services.AddSingleton<CSVServices>(serviceProvider =>
+builder.Services.AddSingleton<CSVServices>(provider =>
 {
-    var userCsvFilePath = configuration["CsvFiles:Users"] ?? "users.csv";
-    var courseCsvFilePath = configuration["CsvFiles:Courses"] ?? "courses.csv";
-    var gradeCsvFilePath = configuration["CsvFiles:Grades"] ?? "grades.csv";
-    return new CSVServices(userCsvFilePath, courseCsvFilePath, gradeCsvFilePath);
+    return CSVServices.GetInstance("Data/users.csv", "Data/courses.csv", "Data/grades.csv");
 });
 
 // Đăng ký AuthManagement

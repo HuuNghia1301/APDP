@@ -15,8 +15,8 @@ public class TeacherController : Controller
 
     public IActionResult Index()
     {
-        var grades = _csvService.GetGrades();  // Lấy các khóa học từ courses.csv
-        ViewBag.Grade = grades; // Truyền dữ liệu cho View
+        var grades = _csvService.GetGrades();  
+        ViewBag.Grade = grades; 
         return View(grades);
     }
     public IActionResult ViewCourse()
@@ -41,7 +41,7 @@ public class TeacherController : Controller
         // Truyền thông tin sang view
         ViewBag.TeacherName = teacherName;
 
-        return View(courses); // Trả về View tên MyCourses.cshtml
+        return View(courses); 
     }
     // Xử lý thêm khóa học (POST)
     public IActionResult Create()
