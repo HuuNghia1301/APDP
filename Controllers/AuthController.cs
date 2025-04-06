@@ -65,46 +65,44 @@ namespace Demo.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password, string phoneNumber)
         {
-            // Kiểm tra nếu email hoặc password trống
+            // Check if email or password is empty
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                ModelState.AddModelError("", "Vui lòng nhập đầy đủ Email và Mật khẩu.");
+                ModelState.AddModelError("", "Please enter both Email and Password.");
                 return View();
             }
 
-            // Lấy user từ cơ sở dữ liệu bằng email hoặc số điện thoại
+            // Retrieve user from the database by email or phone number
             var user = authManager.GetUserByEmailOrPhoneNumber(email, phoneNumber);
 
-            // Kiểm tra nếu tìm thấy user và mật khẩu đúng
+            // Check if user is found and password is correct
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
-                // Lưu thông tin người dùng vào Session
+                // Store user information in Session
                 HttpContext.Session.SetString("FirstName", user.FirstName ?? string.Empty);
                 HttpContext.Session.SetString("LastName", user.LastName ?? string.Empty);
                 HttpContext.Session.SetString("CodeUser", user.CodeUser ?? string.Empty);
 
-                // Kiểm tra lại việc lưu session
+                // Debug: Check if session values are stored correctly
                 Console.WriteLine($"Session FirstName: {HttpContext.Session.GetString("FirstName")}");
                 Console.WriteLine($"Session LastName: {HttpContext.Session.GetString("LastName")}");
                 Console.WriteLine($"Session CodeUser: {HttpContext.Session.GetString("CodeUser")}");
 
-               
-                // Điều hướng đến trang phù hợp dựa trên vai trò của người dùng
+                // Redirect to appropriate page based on user role
                 return user.Role switch
                 {
-                    "Admin" => RedirectToAction("ListUser"),    
-                    "Student" => RedirectToAction("ViewGrades", "Student"), 
+                    "Admin" => RedirectToAction("ListUser"),
+                    "Student" => RedirectToAction("ViewGrades", "Student"),
                     "Teacher" => RedirectToAction("ViewCourse", "Teacher"),
-                    _ => View() // Nếu không phải các vai trò trên, quay lại view hiện tại
+                    _ => View() // If role is not recognized, return the current view
                 };
-                // Strategy Pattern duoc ap dung de quyet dinh chuyen huong theo role
+                // Strategy Pattern is applied to determine redirection based on role
             }
 
-            // Nếu không tìm thấy người dùng hoặc mật khẩu sai
-            ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác.");
+            // If user not found or password is incorrect
+            ModelState.AddModelError("", "Invalid email or password.");
             return View();
         }
-
 
         [HttpPost]
         public IActionResult Register(string FirstName, string LastName, string Address, string Email, string PhoneNumber, string Password, string Role)

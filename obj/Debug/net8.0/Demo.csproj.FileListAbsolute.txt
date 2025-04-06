@@ -1417,3 +1417,4 @@ C:\Users\tuanc\OneDrive\Desktop\APDP-Nghia\obj\Debug\net8.0\Demo.pdb
 C:\Users\tuanc\OneDrive\Desktop\APDP-Nghia\obj\Debug\net8.0\Demo.genruntimeconfig.cache
 C:\Users\tuanc\OneDrive\Desktop\APDP-Nghia\obj\Debug\net8.0\ref\Demo.dll
 C:\Users\ASUS\Desktop\APDP\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout_Teacher.cshtml.rz.scp.css
+C:\Users\tuanc\OneDrive\Desktop\APDP-Nghia\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout_Teacher.cshtml.rz.scp.css

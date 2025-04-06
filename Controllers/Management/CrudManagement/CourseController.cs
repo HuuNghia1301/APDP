@@ -1,136 +1,172 @@
-﻿    using System.Diagnostics;
-    using Microsoft.AspNetCore.Mvc;
-    using Demo.Models;
-    using Demo.Controllers.utilities;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using Demo.Models;
+using Demo.Controllers.utilities;
 using Demo.Controllers.Management.Authentication;
 
-    namespace Demo.Controllers.Management.CrudManagement
+namespace Demo.Controllers.Management.CrudManagement
+{
+    public class CourseController : Controller
     {
-        public class CourseController : Controller
-        {
-            private readonly ILogger<CourseController> _logger;
-            private readonly CSVServices _csvServices;
+        private readonly ILogger<CourseController> _logger;
+        private readonly CSVServices _csvServices;
 
-            private CourseController(ILogger<CourseController> logger, CSVServices csvServices)
-            {
-                _logger = logger;
-                _csvServices = csvServices; // Khởi tạo đối tượng CSVServices
-               // Dependency injection
+        // Constructor with dependency injection
+        // Lớp CourseController nhận logger và CSVServices qua DI (Dependency Injection)
+        private CourseController(ILogger<CourseController> logger, CSVServices csvServices)
+        {
+            _logger = logger;
+            _csvServices = csvServices;
         }
+
+        // Default constructor with CSV path initialization
+        // Constructor mặc định thiết lập các đường dẫn CSV cho người dùng, khóa học và điểm số
         public CourseController()
         {
             string userCsvPath = "Data/users.csv";
             string courseCsvPath = "Data/courses.csv";
             string gradeCsvPath = "Data/grades.csv";
-
-            // Khởi tạo Singleton
+            // Khởi tạo dịch vụ CSV với các đường dẫn file
             _csvServices = CSVServices.GetInstance(userCsvPath, courseCsvPath, gradeCsvPath);
-
-            
         }
 
+        // Show list of courses
+        // Hiển thị danh sách các khóa học từ file CSV
         public IActionResult Index()
-            {
-                var courses = _csvServices.GetCourses(); 
-                ViewBag.Courses = courses;  // Truyền dữ liệu cho View
-                return View(courses);
-            }
+        {
+            var courses = _csvServices.GetCourses();
+            ViewBag.Courses = courses;  // Truyền dữ liệu khóa học vào view
+            return View(courses);
+        }
 
-            // Hiển thị trang Create (GET)
-            [HttpGet]
-            public IActionResult Create()
-            {
-                // Lấy danh sách giáo viên từ dịch vụ
-                var teachers = _csvServices.GetTeachers(); 
-                // Truyền danh sách giáo viên vào ViewData
-                ViewData["Teachers"] = teachers;
+        // Display the Create page (GET)
+        // Hiển thị trang tạo khóa học (GET)
+        [HttpGet]
+        public IActionResult Create()
+        {
+            // Lấy danh sách giảng viên từ dịch vụ CSV
+            var teachers = _csvServices.GetTeachers();
+            // Truyền danh sách giảng viên vào View
+            ViewData["Teachers"] = teachers;
 
+            return View();
+        }
+
+        // Handle course creation (POST)
+        // Xử lý việc tạo khóa học (POST)
+        [HttpPost]
+        public IActionResult Create(string courseName, string Description, string StringnameTeacher)
+        {
+            // Kiểm tra tính hợp lệ của dữ liệu đầu vào
+            if (!IsValidCourseInput(courseName, Description, StringnameTeacher))
+            {
+                ModelState.AddModelError("", "Please fill in all fields.");
+                ViewData["Teachers"] = _csvServices.GetTeachers();
                 return View();
             }
-            // Xử lý thêm khóa học (POST)
-            [HttpPost]
-            public IActionResult Create(string courseName, string Description, string StringnameTeacher) // Đổi tên biến
+
+            var course = new Course
             {
-                if (string.IsNullOrWhiteSpace(courseName) || string.IsNullOrWhiteSpace(Description) || string.IsNullOrEmpty(StringnameTeacher))
-                {
-                    ModelState.AddModelError("", "Please fill in all fields.");
+                courseName = courseName,
+                Description = Description,
+                StringnameTeacher = StringnameTeacher
+            };
 
-                    ViewData["Teachers"] = _csvServices.GetTeachers();
-                    return View();
-                }
-           
-                var course = new Course
-                {
-                    courseName = courseName,
-                    Description = Description,
-                    StringnameTeacher = StringnameTeacher  // Dữ liệu sẽ đúng
-                };
+            // Ghi khóa học vào file CSV
+            _csvServices.writeCourse(course);
 
-                _csvServices.writeCourse(course);
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
+        // Helper method to validate course input
+        // Phương thức phụ để kiểm tra tính hợp lệ của dữ liệu đầu vào
+        private bool IsValidCourseInput(string courseName, string description, string teacherName)
+        {
+            return !string.IsNullOrWhiteSpace(courseName) && 
+                   !string.IsNullOrWhiteSpace(description) && 
+                   !string.IsNullOrEmpty(teacherName);
+        }
+
+        // Show confirmation page for deleting a course
+        // Hiển thị trang xác nhận xóa khóa học
+        [HttpGet]
+        public IActionResult Delete(int courseId)
+        {
+            var course = GetCourseById(courseId);
+
+            // Nếu không tìm thấy khóa học, trả về lỗi NotFound
+            if (course == null)
+            {
+                return NotFound($"Course with ID {courseId} not found.");
             }
 
+            return View(course); // Trả về view xác nhận xóa khóa học
+        }
 
-
-
-            // Hiển thị trang xác nhận xóa khóa học
-            [HttpGet]
-            public IActionResult Delete(int courseId)
+        // Handle course deletion (POST)
+        // Xử lý việc xóa khóa học (POST)
+        [HttpPost]
+        public IActionResult DeleteConfirmed(int courseId)
+        {
+            // Kiểm tra tính hợp lệ của courseId trước khi xóa
+            if (courseId == 0)
             {
-                var course = _csvServices.GetCourses().FirstOrDefault(c => c.courseId == courseId);
-
-                if (course == null)
-                {
-                    return NotFound("Không tìm thấy khóa học có ID: " + courseId);
-                }
-
-                return View(course); // Truyền thông tin khóa học sang View
+                return BadRequest("Invalid ID.");
             }
 
-            // Xử lý xóa khóa học (POST)
+            // Gọi phương thức xóa khóa học từ dịch vụ CSV
+            _csvServices.DeleteCourse(courseId);
 
-            [HttpPost]
-            public IActionResult DeleteConfirmed(int courseId)
-            {
-                if (courseId == 0)
-                {
-                    Console.WriteLine("ID không hợp lệ!");
-                    return BadRequest("ID không hợp lệ.");
-                }
+            return RedirectToAction("Index");
+        }
 
-                Console.WriteLine($"Đang xóa khóa học có ID: {courseId}");
-                _csvServices.DeleteCourse(courseId); // Gọi hàm xóa trong CSVServices
+        // Helper method to get a course by ID
+        // Phương thức phụ để tìm khóa học theo ID
+        private Course GetCourseById(int courseId)
+        {
+            return _csvServices.GetCourses().FirstOrDefault(c => c.courseId == courseId);
+        }
 
-                return RedirectToAction("Index");
-            }
+        // Show edit page (GET)
+        // Hiển thị trang chỉnh sửa khóa học (GET)
         [HttpGet]
         public IActionResult Edit(int courseId)
         {
-            var course = _csvServices.GetCourses().FirstOrDefault(c => c.courseId == courseId);
+            var course = GetCourseById(courseId);
+
+            // Kiểm tra nếu không tìm thấy khóa học
             if (course == null)
             {
-                return NotFound($"Không tìm thấy khóa học có ID: {courseId}");
+                return NotFound($"Course with ID {courseId} not found.");
             }
+
+            // Lấy danh sách giảng viên để chỉnh sửa
             var teachers = _csvServices.GetTeachers();
             ViewData["Teachers"] = teachers;
 
-            return View(course); // Trả về View để chỉnh sửa khóa học
+            return View(course); // Trả về view chỉnh sửa khóa học
         }
 
+        // Handle course editing (POST)
+        // Xử lý việc chỉnh sửa khóa học (POST)
         [HttpPost]
         public IActionResult Edit(int courseId, string courseName, string Description, string StringnameTeacher)
         {
+            // Kiểm tra tính hợp lệ của courseId
             if (courseId == 0)
             {
-                return BadRequest("ID không hợp lệ.");
+                return BadRequest("Invalid ID.");
             }
-            if (string.IsNullOrWhiteSpace(courseName) || string.IsNullOrWhiteSpace(Description))
+
+            // Kiểm tra tính hợp lệ của dữ liệu đầu vào
+            if (!IsValidCourseInput(courseName, Description, StringnameTeacher))
             {
-                ModelState.AddModelError("", "Vui lòng nhập đầy đủ thông tin.");
+                ModelState.AddModelError("", "Please enter all required information.");
                 return View();
             }
-            _csvServices.UpdateCourse(courseId, courseName, Description, StringnameTeacher); // Gọi hàm cập nhật trong CSVServices
+
+            // Gọi phương thức cập nhật khóa học
+            _csvServices.UpdateCourse(courseId, courseName, Description, StringnameTeacher);
             return RedirectToAction("Index");
         }
     }

@@ -396,10 +396,17 @@ namespace Demo.Controllers.utilities
             return users.FirstOrDefault(u => u.CodeUser == codeUser);
         }
 
+        // Phương thức lọc người dùng có vai trò "Teacher"
         public List<User> GetTeachers()
         {
-            var users = GetAllUsers(); // Lấy danh sách người dùng từ file CSV
-            return users.Where(u => u.Role == "Teacher").ToList(); // Lọc người dùng có Role là "Teacher"
+            var users = GetAllUsers(); // Lấy tất cả người dùng từ file CSV
+            return FilterTeachers(users); // Lọc người dùng có Role là "Teacher"
+        }
+
+        // Phương thức lọc người dùng có Role là "Teacher"
+        private List<User> FilterTeachers(List<User> users)
+        {
+            return users.Where(u => u.Role == "Teacher").ToList();
         }
 
         public List<User> GetTeacherOfStudent(string codeUser)
